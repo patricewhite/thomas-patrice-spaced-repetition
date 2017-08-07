@@ -9,20 +9,10 @@ const userSchema = mongoose.Schema({
 // const questionSchema = mongoose.Schema({
 //   questionsList: [
 //     {
-//       category: 'Global',
 //       question: 'open file',
 //       answer: ':o file'
 //     }
 //   ],
-
-  //or
-
-//   global: [
-//     {
-//       question: 'open file',
-//       answer: ':o file'
-//     }
-//   ]
 // });
 
 const User = mongoose.model('User', userSchema);
