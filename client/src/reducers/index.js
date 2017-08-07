@@ -28,6 +28,16 @@ const reducer = (state = initialState, action) => {
       error: action.error
     });
 
+  case SET_ACCESS_TOKEN:
+    return Object.assign({}, state, {
+      accessToken: action.accessToken
+    });
+
+  case REMOVE_ACCESS_TOKEN:
+    return Object.assign({}, state, {
+      accessToken: null
+    });
+
   default:
     return state;
   }

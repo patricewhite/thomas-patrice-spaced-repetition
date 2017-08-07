@@ -17,8 +17,20 @@ export const fetchUserError = error => ({
   error
 });
 
+export const SET_ACCESS_TOKEN = 'SET_ACCESS_TOKEN';
+export const setAccessToken = accessToken => ({
+  type: SET_ACCESS_TOKEN,
+  accessToken
+});
+
+export const REMOVE_ACCESS_TOKEN = 'REMOVE_ACCESS_TOKEN';
+export const removeAccessToken = () => ({
+  type: REMOVE_ACCESS_TOKEN
+});
+
 export const fetchUser = accessToken => dispatch => {
   dispatch(fetchUserRequest());
+  dispatch(setAccessToken(accessToken));
   fetch('/api/me', {
     headers: {
       'Authorization': `Bearer ${accessToken}`
@@ -27,6 +39,7 @@ export const fetchUser = accessToken => dispatch => {
     if (!res.ok) {
       if (res.status === 401) {
         Cookies.remove('accessToken');
+        dispatch(removeAccessToken());
         return;
       }
       return Promise.reject(res.statusText);
