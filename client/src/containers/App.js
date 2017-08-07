@@ -47,7 +47,7 @@ export class App extends React.Component {
   }
 
   render() {
-    if (!this.state.currentUser) {
+    if (!this.props.currentUser) {
       return <LoginPage />;
     }
 
@@ -64,4 +64,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default App;
+export default connect(mapStateToProps)(App);
