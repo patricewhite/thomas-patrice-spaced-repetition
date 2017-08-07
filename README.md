@@ -28,7 +28,7 @@ You can run it locally now with `npm run dev`, but the Google OAuth stuff won't 
 
 Visit https://console.developers.google.com
 
-* Navigate to Library 
+* Navigate to Library
 * Under 'Social APIs', Click 'Google+ API'
 * Click 'Enable' at the top (if it isn't already)
 

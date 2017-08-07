@@ -94,6 +94,7 @@ app.get('/api/me',
     })
 );
 
+// TODO: override this response.
 app.get('/api/questions',
     passport.authenticate('bearer', {session: false}),
     (req, res) => res.json(['Question 1', 'Question 2'])
