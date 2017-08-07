@@ -1,11 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import * as Cookies from 'js-cookie';
 import * as actions from '../actions';
 
 import QuestionPage from '../views/QuestionPage';
 import LoginPage from '../views/LoginPage';
 
-class App extends React.Component {
+export class App extends React.Component {
   constructor(props) {
     super(props);
     // this.state = {
@@ -53,5 +54,14 @@ class App extends React.Component {
     return <QuestionPage />;
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    loading: state.loading,
+    error: state.error,
+    currentUser: state.currentUser,
+    accessToken: state.accessToken
+  };
+};
 
 export default App;
