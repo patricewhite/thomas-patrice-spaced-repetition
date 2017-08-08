@@ -54,7 +54,77 @@ export const fetchUser = accessToken => dispatch => {
 
 // fetchQuestions() => that just pulls the array of questions off the db.
 
-// checkAnswer(userAnswer, currentQuestion) => true or false
+//Doubly Linked List
+class DLinkedList {
+    constructor() {
+        this.length = 0;
+        this.head = null;
+    }
+    insert(nthPosition, value) {
+        if (nthPosition < 0 || nthPosition > this.length) {
+            throw new Error('Index error');
+        }
+        const newNode = {
+            value
+        };
+        if (nthPosition == 0) {
+            newNode.next = this.head;
+            newNode.previous = null;
+            this.head = newNode;
+        }
+        else {
+            const node = this._findNthElement(nthPosition - 1);
+            newNode.next = node.next;
+            newNode.previous = node;
+            node.next = newNode;
+        }
+
+        this.length++;
+    }
+   _findNthElement(nthElement) {
+        let node = this.head;
+        for (let i=0; i<nthElement; i++) {
+            node = node.next;
+        }
+        return node;
+    }
+    get(nthElement) {
+        if (nthElement < 0 || nthElement >= this.length) {
+            throw new Error('Index error');
+        }
+
+        return this._findNthElement(nthElement).value;
+    }
+
+   remove(nthElement) {
+        var currNode = this._findNthElement(nthElement);
+        if (!(currNode.next == null)) {
+            currNode.previous.next = currNode.next;
+            currNode.next.previous = currNode.previous;
+            currNode.next = null;
+            currNode.previous = null;
+        }
+    }
+}
+
+function findLast(lst) {
+    var currNode = lst.head;
+    while (!(currNode.next == null)) {
+        currNode = currNode.next;
+        console.log(currNode);
+    }
+    return currNode;
+}
+
+
+
+const checkAnswer = (userAnswer, currentQuestion) => {
+  if(userAnswer !== currentQuestion[0].answer){
+    return false;
+  }else{
+    return true;
+  }
+};
 
 // spacedRep(userAnswer, currentQuestion, questionsList) => Output an updated questions list.
     // if (checkAnswer) dispatch(totalCorrect++, totalAnswered++)
@@ -62,3 +132,30 @@ export const fetchUser = accessToken => dispatch => {
     // dispatch(newQuestionsList)
 
 // pullQuestion(questionsList) => sets currentQuestion to be displayed.
+
+const spacedRep = (userAnswer=null, currentQuestion=null, questionsList) => {
+  let dll = new DLinkedList();
+  if(userAnswer && currentQuestion === null){
+    for(let i = 0; i < questionsList.length; i++){
+      dll.insert(i+1, questionsList[i])
+    }
+  return dll;
+  }
+
+  if(checkAnswer(userAnswer, currentQuestion) === false){
+    dispatch(totalCorrect++, totalAnswered++);
+    dll.insert(2, currentQuestion);
+  }
+
+  if(checkAnswer(userAnswer, currentQuestion) === true){
+    dispatch(totalAnswered++);
+    dll.insert(dll.length, currentQuestion);
+  }
+  dispatch(dll);
+};
+
+const pullQuestion = (dll){
+  let question = dll.get(1);
+  dispatch(question);
+  dll.remove(question);//1
+}
