@@ -1,5 +1,6 @@
 import React from 'react';
 import ContentBox from '../components/login/ContentBox';
+import AuthBox from '../components/login/AuthBox';
 
 export default function LoginPage() {
   const loginContent = {
@@ -41,10 +42,7 @@ export default function LoginPage() {
           title={loginContent.box3.title}
         />
       </div>
-      <div className='login-auth-container'>
-        <h3>Interested? Click below to login or signup!</h3>
-        <a href={'/api/auth/google'}>Login with Google</a>
-      </div>
+      <AuthBox />
     </div>
   );
 }
