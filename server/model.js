@@ -15,11 +15,11 @@ const listSchema = mongoose.Schema({
   questionsList: [ questionSchema ]
 });
 
-// questionSchema.methods.apiRepr = function(){
-//   return {
-//     questionsList: this.questionsList
-//   };
-// };
+listSchema.methods.apiRepr = function(){
+  return {
+    questionsList: this.questionsList
+  };
+};
 
 
 const User = mongoose.model('User', userSchema);

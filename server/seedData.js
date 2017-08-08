@@ -1,11 +1,11 @@
 'use strict';
 
-const {Question} = require('./model.js');
+const {Question, QuestionList} = require('./model.js');
 const mongoose = require('mongoose');
 const {DATABASE_URL} = require('./secret');
 
 
-const questionsToAsk = {
+const questionsToAsk = [
   {
     question: 'What command do you use to switch to insert mode?',
     answer: 'i'
@@ -28,7 +28,7 @@ const questionsToAsk = {
   },
   {
     question: 'What command do you use to move the cursor one character to the right?',
-    amswer: 'l'
+    answer: 'l'
   },
   {
     question: 'What command do you use to move the cursor up one line?',
@@ -42,17 +42,21 @@ const questionsToAsk = {
     question: 'What command do you use to move the cursor to a specific line?',
     answer: 'nG'
   }
-};
+];
 
-seeQuestionData(data){
-
+function seedList(data){
+  console.log(data);
+  return QuestionList.insertMany(data);
 }
 
 function tearDownDb() {
   return new Promise((resolve, reject) => {
     console.warn('Deleting database');
     mongoose.connection.dropDatabase()
-      .then(result => resolve(result))
+      .then(result => {
+        console.log(result);
+        resolve(result);
+      })
       .catch(err => reject(err));
   });
 }
@@ -63,7 +67,11 @@ mongoose.connect(DATABASE_URL, err => {
   }
   tearDownDb().then(response => {
     return Question
-    .insertMany(questionsToAsk)
+      .insertMany(questionsToAsk)
+      .then(response => {
+        console.log("GHVDSCGHVHGVC",response);
+        seedList(response);
+      })
   })
     .catch(err => {
       console.error(err);
