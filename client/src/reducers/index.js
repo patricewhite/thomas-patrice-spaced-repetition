@@ -63,6 +63,31 @@ const reducer = (state = initialState, action) => {
       error: action.error
     });
 
+  case actions.SET_USER_QUESTIONS:
+    return Object.assign({}, state, {
+      userQuestions: action.userQuestions
+    });
+
+  case actions.SET_CURRENT_QUESTION:
+    return Object.assign({}, state, {
+      currentQuestion: action.currentQuestion
+    });
+
+  case actions.SET_CURRENT_ANSWER:
+    return Object.assign({}, state, {
+      currentAnswer: action.currentUser
+    });
+
+  case actions.INCREMENT_TOTAL_CORRECT:
+    return Object.assign({}, state, {
+      totalCorrect: (state.totalCorrect++)
+    });
+
+  case actions.INCREMENT_TOTAL_ANSWERED:
+    return Object.assign({}, state, {
+      totalAnswered: (state.totalAnswered++)
+    });
+
   default:
     return state;
   }
