@@ -15,6 +15,11 @@ export default class QuestionPage extends React.Component {
       questionsCorrect: 15,
       totalQuestions: 20
     };
+    this.questProps = {
+      currentQuestion: 'This is a question...',
+      onChange: (e) => console.log(e.target.value),
+      onSubmit: (e) => e.preventDefault()
+    };
   }
 
   // componentDidMount() {
@@ -44,23 +49,11 @@ export default class QuestionPage extends React.Component {
           totalQuestions={this.navProps.totalQuestions}
         />
 
-        <div className='questions-container'>
-          <div className='question-controls'>
-            <a href='#'>Previous</a>
-            <a href='#'>I don't know!</a>
-          </div>
-          <h2 className='question-text'>This is a question...</h2>
-          <form className='answer-form'>
-            <input
-              type='text'
-              defaultValue='Enter your answer...'
-              className='answer-input'
-            />
-            <button type='submit'>
-              Submit
-            </button>
-          </form>
-        </div>
+        <QuestionBox
+          currentQuestion={this.questProps.currentQuestion}
+          onChange={this.questProps.onChange}
+          onSubmit={this.questProps.onSubmit}
+        />
       </div>
     );
   }
