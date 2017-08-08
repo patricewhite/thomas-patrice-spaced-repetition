@@ -28,7 +28,7 @@ export default class QuestionPage extends React.Component {
   }
 
   render() {
-    const questions = this.state.questions.map((question, index) =>
+    const questions = this.state.questions.questionsList.map((question, index) =>
       <li key={index}>{question}</li>
         );
 
