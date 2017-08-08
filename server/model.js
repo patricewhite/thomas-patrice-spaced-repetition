@@ -6,15 +6,24 @@ const userSchema = mongoose.Schema({
   accessToken: {type: String, required: true}
 });
 
-// const questionSchema = mongoose.Schema({
-//   questionsList: [
-//     {
-//       question: 'open file',
-//       answer: ':o file'
-//     }
-//   ],
-// });
+const questionSchema = mongoose.Schema({
+  question: {type: String, required: true},
+  answer: {type: String, required: true}
+});
+
+const listSchema = mongoose.Schema({
+  questionsList: [ questionSchema ]
+});
+
+listSchema.methods.apiRepr = function(){
+  return {
+    questionsList: this.questionsList
+  };
+};
+
 
 const User = mongoose.model('User', userSchema);
+const QuestionList = mongoose.model('QuestionList', listSchema);
+const Question = mongoose.model('Question', questionSchema);
 
-module.exports = { User };
+module.exports = { User, QuestionList, Question };

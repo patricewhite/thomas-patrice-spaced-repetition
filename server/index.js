@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const BearerStrategy = require('passport-http-bearer').Strategy;
 
-const { User } = require('./model');
+const { User, Question, QuestionList } = require('./model');
 //PLEASE WORK
 mongoose.Promise = global.Promise;
 
@@ -95,10 +95,19 @@ app.get('/api/me',
 );
 
 // TODO: override this response.
-app.get('/api/questions',
-    passport.authenticate('bearer', {session: false}),
-    (req, res) => res.json(['Question 1', 'Question 2'])
-);
+app.get('/api/questions',passport.authenticate('bearer', {session: false}),(req, res) => {
+  QuestionList
+    .find()
+    .exec()
+    .then(q => {
+      res.json(q.map(q => q.apiRepr()));
+    })
+    .catch(
+      err => {
+        console.error(err);
+        res.status(500).json({message: 'Internal server error'});
+      });
+});
 
 // Serve the built client
 app.use(express.static(path.resolve(__dirname, '../client/build')));
