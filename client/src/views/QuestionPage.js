@@ -1,13 +1,20 @@
 import React from 'react';
+import NavBar from '../components/nav/NavBar';
 import * as Cookies from 'js-cookie';
 
 export default class QuestionPage extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     questions: []
-  //   };
-  // }
+  constructor(props) {
+    super(props);
+    // this.state = {
+    //   questions: []
+    // };
+    this.navProps = {
+      profileImg: 'http://via.placeholder.com/150x150',
+      currentStreak: 15,
+      questionsCorrect: 15,
+      totalQuestions: 20
+    };
+  }
 
   // componentDidMount() {
   //   const accessToken = Cookies.get('accessToken');
@@ -26,21 +33,15 @@ export default class QuestionPage extends React.Component {
   //           })
   //       );
   // }
-
   render() {
     return (
       <div className='views-questions-page'>
-        <div className='nav-bar-conainer'>
-          <img
-            src='http://via.placeholder.com/150x150'
-            alt='profile'
-          />
-          <div className='scoreboard-container'>
-            <h3>Current Streak...</h3>
-            <h3>Total Score</h3>
-          </div>
-          <a href={'/api/auth/logout'}>Logout</a>
-        </div>
+        <NavBar
+          profileImg={this.navProps.profileImg}
+          currentStreak={this.navProps.currentStreak}
+          questionsCorrect={this.navProps.questionsCorrect}
+          totalQuestions={this.navProps.totalQuestions}
+        />
 
         <div className='questions-container'>
           <div className='question-controls'>
