@@ -3,7 +3,14 @@ import * as actions from '../actions';
 const initialState = {
   loading: false,
   error: null,
-  questions: [],
+
+  dbQuestions: [], // a fixed array of questions from the DB.
+  userQuestions: [], // this list of questions to be asked. Out from the spacedRep.
+  currentQuestion: {}, // current question displayed. { _id: 234234, question: 'something', answer: 'something'},
+  currentAnswer: null,
+  totalCorrect: 0,
+  totalAnswered: 0,
+
   currentUser: null,
   accessToken: null,
 };

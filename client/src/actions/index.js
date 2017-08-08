@@ -51,3 +51,14 @@ export const fetchUser = accessToken => dispatch => {
     dispatch(fetchUserError(err));
   });
 };
+
+// fetchQuestions() => that just pulls the array of questions off the db.
+
+// checkAnswer(userAnswer, currentQuestion) => true or false
+
+// spacedRep(userAnswer, currentQuestion, questionsList) => Output an updated questions list.
+    // if (checkAnswer) dispatch(totalCorrect++, totalAnswered++)
+    // do some stuff
+    // dispatch(newQuestionsList)
+
+// pullQuestion(questionsList) => sets currentQuestion to be displayed.
