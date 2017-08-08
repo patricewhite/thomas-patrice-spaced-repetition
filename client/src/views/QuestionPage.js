@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../components/nav/NavBar';
 import QuestionBox from '../components/question/QuestionBox';
+import '../styles/QuestionPage.css';
 import * as Cookies from 'js-cookie';
 
 export default class QuestionPage extends React.Component {
