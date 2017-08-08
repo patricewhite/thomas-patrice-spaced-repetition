@@ -1,4 +1,4 @@
-'use strict';
+
 
 const {Question, QuestionList} = require('./model.js');
 const mongoose = require('mongoose');
@@ -45,8 +45,10 @@ const questionsToAsk = [
 ];
 
 function seedList(data){
-  console.log(data);
-  return QuestionList.insertMany(data);
+  console.log('SEEDING THIS:', data);
+  return QuestionList.create({
+    questionsList: data
+  });
 }
 
 function tearDownDb() {
@@ -69,9 +71,8 @@ mongoose.connect(DATABASE_URL, err => {
     return Question
       .insertMany(questionsToAsk)
       .then(response => {
-        console.log("GHVDSCGHVHGVC",response);
         seedList(response);
-      })
+      });
   })
     .catch(err => {
       console.error(err);
