@@ -2,3 +2,31 @@
   display: flex;
   flex-direction: column;
 }
+
+.questions-container {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin-top: 5em;
+  width: 30em;
+  height: 20em;
+}
+
+.question-controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5em 1.5em 0 1.5em;
+}
+
+.question-text {
+  padding: 0 1.5em;
+}
+
+.answer-form {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1.5em 1.5em 1.5em;
+}
