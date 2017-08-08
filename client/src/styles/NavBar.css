@@ -1,0 +1,26 @@
+.nav-bar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid black;
+}
+
+.profile-image {
+  flex-grow: 1;
+}
+
+.scoreboard-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 2;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 0 5em;
+}
+
+.account-controls {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
