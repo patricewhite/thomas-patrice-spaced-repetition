@@ -7,18 +7,23 @@ const userSchema = mongoose.Schema({
 });
 
 const questionSchema = mongoose.Schema({
-  question:{type: String},
-  answer: {type: String}
+  question: {type: String, required: true},
+  answer: {type: String, required: true}
 });
 
-questionSchema.methods.apiRepr = function(){
-  return {
-    questionsList: this.questionsList
-  };
-};
+const listSchema = mongoose.Schema({
+  questionsList: [ questionSchema ]
+});
+
+// questionSchema.methods.apiRepr = function(){
+//   return {
+//     questionsList: this.questionsList
+//   };
+// };
 
 
 const User = mongoose.model('User', userSchema);
+const QuestionList = mongoose.model('QuestionList', listSchema);
 const Question = mongoose.model('Question', questionSchema);
 
-module.exports = { User, Question };
+module.exports = { User, QuestionList, Question };
