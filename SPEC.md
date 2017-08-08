@@ -16,3 +16,27 @@
 ## Wire Frames
 (https://wireframe.cc/PAFKuo)[Login Screen]
 (https://wireframe.cc/jLggtc)[Questions Page]
+
+## Data Flow for Spaced Rep Algorithm
+* Algorithm lives on the front end.
+* Questions are in a fixed array in the DB. => Done.
+* Easy version of session state:
+```js
+sessionState = {
+  sessionDate: Date,
+  questionsCorrect: Number,
+  totalQuestions: Number,
+}
+```
+* More advanced version:
+```js
+sessionState = {
+  sessionDate: Date,
+  answeredQuestions: [
+    {
+      questionID: mongoID,
+      correct: true
+    }
+  ]
+}
+```
