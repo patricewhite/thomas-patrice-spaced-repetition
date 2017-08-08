@@ -6,15 +6,19 @@ const userSchema = mongoose.Schema({
   accessToken: {type: String, required: true}
 });
 
-// const questionSchema = mongoose.Schema({
-//   questionsList: [
-//     {
-//       question: 'open file',
-//       answer: ':o file'
-//     }
-//   ],
-// });
+const questionSchema = mongoose.Schema({
+  question:{type: String},
+  answer: {type: String}
+});
+
+questionSchema.methods.apiRepr = function(){
+  return {
+    questionsList: this.questionsList
+  };
+};
+
 
 const User = mongoose.model('User', userSchema);
+const Question = mongoose.model('Question', questionSchema);
 
-module.exports = { User };
+module.exports = { User, Question };
