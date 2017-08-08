@@ -1,13 +1,14 @@
 import React from 'react';
 import ContentBox from '../components/login/ContentBox';
 import AuthBox from '../components/login/AuthBox';
+import '../styles/LoginPage.css';
 
 export default function LoginPage() {
   const loginContent = {
     box1: {
       imgSrc: 'http://via.placeholder.com/250x250',
       imgAlt: 'Categories',
-      title: 'Select Vim command categories to practice.'
+      title: 'Select categories...'
     },
     box2: {
       imgSrc: 'http://via.placeholder.com/250x250',
@@ -21,10 +22,12 @@ export default function LoginPage() {
     }
   };
   return (
-    <div>
-      <img src='http://via.placeholder.com/1300x500' alt='Hero' />
-      <h1>How Do I Vim?</h1>
-      <p>Learn how to more than just exit.</p>
+    <div className='views-login-page'>
+      <div className='hero-container'>
+        <img src='http://via.placeholder.com/1300x500' alt='Hero' />
+        <h1>How Do I Vim?</h1>
+        <p>Learn how to more than just exit.</p>
+      </div>
       <div className='login-content-container'>
         <ContentBox
           imgSrc={loginContent.box1.imgSrc}
