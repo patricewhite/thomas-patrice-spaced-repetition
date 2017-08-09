@@ -15,6 +15,10 @@ export class App extends React.Component {
     }
   }
 
+  setCurrentAnswer(currentAnswer) {
+    this.props.dispatch(actions.setCurrentAnswer(currentAnswer));
+  }
+
   fetchQuestions() {
     this.props.dispatch(actions.fetchQuestions(this.props.accessToken));
   }
@@ -32,7 +36,7 @@ export class App extends React.Component {
         fetchQuestions={() => this.fetchQuestions()}
         loadUserQuestions={(currentDll, userAnswer, currentQuestion) => this.loadUserQuestions(currentDll, userAnswer, currentQuestion)}
         currentQuestion={this.props.currentQuestion}
-
+        setCurrentAnswer = {(currentAnswer) => this.setCurrentAnswer(currentAnswer)}
       />
     );
   }
