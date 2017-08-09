@@ -28,6 +28,51 @@ export const removeAccessToken = () => ({
   type: REMOVE_ACCESS_TOKEN
 });
 
+export const FETCH_QUESTIONS_REQUEST = 'FETCH_QUESTIONS_REQUEST';
+export const fetchQuestionsRequest = () => ({
+  type: FETCH_QUESTIONS_REQUEST
+});
+
+export const FETCH_QUESTIONS_SUCCESS = 'FETCH_QUESTIONS_SUCCESS';
+export const fetchQuestionsSuccess = dbQuestions => ({
+  type: FETCH_QUESTIONS_SUCCESS,
+  dbQuestions
+});
+
+export const FETCH_QUESTIONS_ERROR = 'FETCH_QUESTIONS_ERROR';
+export const fetchQuestionsError = error => ({
+  type: FETCH_QUESTIONS_ERROR,
+  error
+});
+
+export const SET_USER_QUESTIONS = 'SET_USER_QUESTIONS';
+export const setUserQuestions = userQuestions => ({
+  type: SET_USER_QUESTIONS,
+  userQuestions
+});
+
+export const SET_CURRENT_QUESTION = 'SET_CURRENT_QUESTION';
+export const setCurrentQuestion = currentQuestion => ({
+  type: SET_CURRENT_QUESTION,
+  currentQuestion
+});
+
+export const SET_CURRENT_ANSWER = 'SET_CURRENT_ANSWER';
+export const setCurrentAnswer = currentAnswer => ({
+  type: SET_CURRENT_ANSWER,
+  currentAnswer
+});
+
+export const INCREMENT_TOTAL_CORRECT = 'INCREMENT_TOTAL_CORRECT';
+export const incrementTotalCorrect = () => ({
+  type: INCREMENT_TOTAL_CORRECT
+});
+
+export const INCREMENT_TOTAL_ANSWERED = 'INCREMENT_TOTAL_ANSWERED';
+export const incrementTotalAnswered = () => ({
+  type: INCREMENT_TOTAL_ANSWERED
+});
+
 export const fetchUser = accessToken => dispatch => {
   dispatch(fetchUserRequest());
   dispatch(setAccessToken(accessToken));
@@ -56,64 +101,64 @@ export const fetchUser = accessToken => dispatch => {
 
 //Doubly Linked List
 class DLinkedList {
-    constructor() {
-        this.length = 0;
-        this.head = null;
+  constructor() {
+    this.length = 0;
+    this.head = null;
+  }
+  insert(nthPosition, value) {
+    if (nthPosition < 0 || nthPosition > this.length) {
+      throw new Error('Index error');
     }
-    insert(nthPosition, value) {
-        if (nthPosition < 0 || nthPosition > this.length) {
-            throw new Error('Index error');
-        }
-        const newNode = {
-            value
-        };
-        if (nthPosition == 0) {
-            newNode.next = this.head;
-            newNode.previous = null;
-            this.head = newNode;
-        }
-        else {
-            const node = this._findNthElement(nthPosition - 1);
-            newNode.next = node.next;
-            newNode.previous = node;
-            node.next = newNode;
-        }
-
-        this.length++;
+    const newNode = {
+      value
+    };
+    if (nthPosition === 0) {
+      newNode.next = this.head;
+      newNode.previous = null;
+      this.head = newNode;
     }
-   _findNthElement(nthElement) {
-        let node = this.head;
-        for (let i=0; i<nthElement; i++) {
-            node = node.next;
-        }
-        return node;
-    }
-    get(nthElement) {
-        if (nthElement < 0 || nthElement >= this.length) {
-            throw new Error('Index error');
-        }
-
-        return this._findNthElement(nthElement).value;
+    else {
+      const node = this._findNthElement(nthPosition - 1);
+      newNode.next = node.next;
+      newNode.previous = node;
+      node.next = newNode;
     }
 
-   remove(nthElement) {
-        var currNode = this._findNthElement(nthElement);
-        if (!(currNode.next == null)) {
-            currNode.previous.next = currNode.next;
-            currNode.next.previous = currNode.previous;
-            currNode.next = null;
-            currNode.previous = null;
-        }
+    this.length++;
+  }
+  _findNthElement(nthElement) {
+    let node = this.head;
+    for (let i=0; i<nthElement; i++) {
+      node = node.next;
     }
+    return node;
+  }
+  get(nthElement) {
+    if (nthElement < 0 || nthElement >= this.length) {
+      throw new Error('Index error');
+    }
+
+    return this._findNthElement(nthElement).value;
+  }
+
+  remove(nthElement) {
+    var currNode = this._findNthElement(nthElement);
+    if (!(currNode.next == null)) {
+      currNode.previous.next = currNode.next;
+      currNode.next.previous = currNode.previous;
+      currNode.next = null;
+      currNode.previous = null;
+    }
+  }
 }
 
 function findLast(lst) {
-    var currNode = lst.head;
-    while (!(currNode.next == null)) {
-        currNode = currNode.next;
-        console.log(currNode);
-    }
-    return currNode;
+  var currNode = lst.head;
+  while (!(currNode.next == null)) {
+    currNode = currNode.next;
+    console.log(currNode);
+  }
+  return currNode;
 }
 
 
@@ -137,9 +182,9 @@ const spacedRep = (questionsList, userAnswer=null, currentQuestion=null) => {
   let dll = new DLinkedList();
   if(userAnswer && currentQuestion === null){
     for(let i = 0; i < questionsList.length; i++){
-      dll.insert(i, questionsList[i])
+      dll.insert(i, questionsList[i]);
     }
-  return dll;
+    return dll;
   }
 
   if(checkAnswer(userAnswer, currentQuestion) === false){
@@ -154,8 +199,8 @@ const spacedRep = (questionsList, userAnswer=null, currentQuestion=null) => {
   dispatch(dll);
 };
 
-const pullQuestion = (dll){
+const pullQuestion = (dll) => {
   let question = dll.get(1);
   dispatch(question);
   dll.remove(question);//1
-}
+};
