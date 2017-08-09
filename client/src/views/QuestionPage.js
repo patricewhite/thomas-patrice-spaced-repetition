@@ -3,6 +3,7 @@ import NavBar from '../components/nav/NavBar';
 import QuestionBox from '../components/question/QuestionBox';
 import '../styles/QuestionPage.css';
 import * as Cookies from 'js-cookie';
+import {fetchQuestions} from '../actions/index';
 
 export default class QuestionPage extends React.Component {
   constructor(props) {
@@ -23,23 +24,10 @@ export default class QuestionPage extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   const accessToken = Cookies.get('accessToken');
-  //   fetch('/api/questions', {
-  //     headers: {
-  //       'Authorization': `Bearer ${accessToken}`
-  //     }
-  //   }).then(res => {
-  //     if (!res.ok) {
-  //       throw new Error(res.statusText);
-  //     }
-  //     return res.json();
-  //   }).then(questions =>
-  //           this.setState({
-  //             questions
-  //           })
-  //       );
-  // }
+  componentDidMount() {
+    // currentQuestion ={this.props.fetchQuestions()};
+  }
+
   render() {
     return (
       <div className='views-questions-page'>
