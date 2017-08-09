@@ -18,6 +18,9 @@ export class App extends React.Component {
   fetchQuestions() {
     this.props.dispatch(actions.fetchQuestions(this.props.accessToken));
   }
+  loadUserQuestions(initialList, currentDll, userAnswer, currentQuestion) {
+    this.props.dispatch(actions.loadUserQuestions(initialList, currentDll, userAnswer, currentQuestion));
+  }
 
   render() {
     if (!this.props.currentUser) {
@@ -27,6 +30,9 @@ export class App extends React.Component {
     return (
       <QuestionPage
         fetchQuestions={() => this.fetchQuestions()}
+        loadUserQuestions={(initialList, currentDll, userAnswer, currentQuestion) => this.loadUserQuestions(initialList, currentDll, userAnswer, currentQuestion)}
+        currentQuestion={this.props.currentQuestion}
+        
       />
     );
   }

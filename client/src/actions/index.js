@@ -200,7 +200,7 @@ const pullQuestion = dll => dispatch => {
 
 // pullQuestion(questionsList) => sets currentQuestion to be displayed.
 
-const spacedRep = (initialList, currentDll = null, userAnswer = null, currentQuestion = null) => dispatch => {
+export const loadUserQuestions = (initialList, currentDll = null, userAnswer = null, currentQuestion = null) => dispatch => {
   // handling initial load, when questionsList = dbQuestions
   if (userAnswer === null && currentQuestion === null && currentDll === null && initialList) {
     const dll = new DLinkedList();
