@@ -1,13 +1,13 @@
 import React from 'react';
 
 export default function QuestionBox(props) {
-  const { currentQuestion, onChange, onSubmit, onStartQuiz } = props;
+  const { currentQuestion, onChange, onSubmit, loadUserQuestions } = props;
   const initialBox = (
     <div className='initial-question-container'>
       <h2>Ready to go?</h2>
       <button
         type='button'
-        onClick={() => onStartQuiz(null, null, currentQuestion)}
+        onClick={() => loadUserQuestions(null, null, currentQuestion)}
         >Let's Go!
       </button>
     </div>
