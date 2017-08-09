@@ -4,6 +4,7 @@ import QuestionBox from '../components/question/QuestionBox';
 import '../styles/QuestionPage.css';
 import * as Cookies from 'js-cookie';
 import {fetchQuestions, setCurrentQuestion} from '../actions/index';
+import store from '../store';
 
 export default class QuestionPage extends React.Component {
   constructor(props) {
@@ -13,7 +14,11 @@ export default class QuestionPage extends React.Component {
     };
     this.questProps = {
       onChange: this.props.setCurrentAnswer,
-      onSubmit: (e) => e.preventDefault(),
+      onSubmit: (e) => {
+        e.preventDefault()
+        alert(this.props.currentAnswer);
+
+      },
       onStartQuiz: (e) => console.log(e.target)
     };
   }
