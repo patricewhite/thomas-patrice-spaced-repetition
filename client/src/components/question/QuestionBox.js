@@ -12,31 +12,37 @@ export default function QuestionBox(props) {
       </button>
     </div>
   );
-  const questionBox = (
-    <div className='current-question-container'>
-      <div className='question-controls'>
-        <a href='#'>Previous</a>
-        <a href='#'>I don't know!</a>
-      </div>
-      <h2 className='question-text'>{currentQuestion}</h2>
-      <form
-        className='answer-form'
-        onSubmit={onSubmit}>
-        <input
-          type='text'
-          defaultValue='Enter your answer...'
-          className='answer-input'
-          onChange={onChange}
-        />
-        <button type='submit'>
-          Submit
-        </button>
-      </form>
-    </div>
-  );
+  const questionBox = currentQuestion => {
+    if (currentQuestion) {
+      return (
+        <div className='current-question-container'>
+          <div className='question-controls'>
+            <a href='#'>Previous</a>
+            <a href='#'>I don't know!</a>
+          </div>
+          <h2 className='question-text'>{currentQuestion.question}</h2>
+          <form
+            className='answer-form'
+            onSubmit={onSubmit}>
+            <input
+              type='text'
+              defaultValue='Enter your answer...'
+              className='answer-input'
+              onChange={onChange}
+            />
+            <button type='submit'>
+              Submit
+            </button>
+          </form>
+        </div>
+      );
+    }
+    else return;
+  };
+  console.log('!!!!', currentQuestion);
   return (
     <div className='questions-container'>
-      {currentQuestion ? questionBox : initialBox}
+      {currentQuestion ? questionBox(currentQuestion) : initialBox}
     </div>
   );
 }
