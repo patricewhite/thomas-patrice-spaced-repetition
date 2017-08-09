@@ -122,9 +122,6 @@ export const fetchQuestions = accessToken => dispatch => {
   });
 };
 
-// fetchQuestions() => that just pulls the array of questions off the db.
-
-//Doubly Linked List
 class DLinkedList {
   constructor() {
     this.length = 0;
@@ -200,20 +197,6 @@ const checkAnswer = (userAnswer, currentQuestion) => {
     return true;
   }
 };
-
-// const pullQuestion = dll => dispatch => {
-//   console.log(dll);
-//   let question = dll.get(1);
-//   dispatch(setCurrentQuestion(question));
-//   dll.remove(1);//1
-//   return dll;
-// };
-// spacedRep(userAnswer, currentQuestion, questionsList) => Output an updated questions list.
-    // if (checkAnswer) dispatch(totalCorrect++, totalAnswered++)
-    // do some stuff
-    // dispatch(newQuestionsList)
-
-// pullQuestion(questionsList) => sets currentQuestion to be displayed.
 
 export const loadUserQuestions = (initialList, currentDll = null, userAnswer = null, currentQuestion = null) => dispatch => {
   // handling initial load, when questionsList = dbQuestions
