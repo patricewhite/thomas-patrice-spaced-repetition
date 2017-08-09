@@ -7,7 +7,6 @@ import QuestionPage from '../views/QuestionPage';
 import LoginPage from '../views/LoginPage';
 
 export class App extends React.Component {
-
   componentDidMount() {
     const accessToken = Cookies.get('accessToken');
 
@@ -16,12 +15,20 @@ export class App extends React.Component {
     }
   }
 
+  fetchQuestions() {
+    this.props.dispatch(actions.fetchQuestions(this.props.accessToken));
+  }
+
   render() {
     if (!this.props.currentUser) {
       return <LoginPage />;
     }
 
-    return <QuestionPage />;
+    return (
+      <QuestionPage
+        fetchQuestions={() => this.fetchQuestions()}
+      />
+    );
   }
 }
 
@@ -29,6 +36,12 @@ const mapStateToProps = state => {
   return {
     loading: state.loading,
     error: state.error,
+    dbQuestions: state.dbQuestions,
+    userQuestions: state.userQuestions,
+    currentQuestion: state.userQuestions,
+    currentAnswer: state.currentAnswer,
+    totalCorrect: state.totalCorrect,
+    totalAnswered: state.totalAnswered,
     currentUser: state.currentUser,
     accessToken: state.accessToken
   };
