@@ -45,6 +45,49 @@ const reducer = (state = initialState, action) => {
       accessToken: null
     });
 
+  case actions.FETCH_QUESTIONS_REQUEST:
+    return Object.assign({}, state, {
+      loading: true
+    });
+
+  case actions.FETCH_QUESTIONS_SUCCESS:
+    return Object.assign({}, state, {
+      dbQuestions: action.dbQuestions,
+      loading: false,
+      error: null
+    });
+
+  case actions.FETCH_QUESTIONS_ERROR:
+    return Object.assign({}, state, {
+      loading: false,
+      error: action.error
+    });
+
+  case actions.SET_USER_QUESTIONS:
+    return Object.assign({}, state, {
+      userQuestions: action.userQuestions
+    });
+
+  case actions.SET_CURRENT_QUESTION:
+    return Object.assign({}, state, {
+      currentQuestion: action.currentQuestion
+    });
+
+  case actions.SET_CURRENT_ANSWER:
+    return Object.assign({}, state, {
+      currentAnswer: action.currentUser
+    });
+
+  case actions.INCREMENT_TOTAL_CORRECT:
+    return Object.assign({}, state, {
+      totalCorrect: (state.totalCorrect++)
+    });
+
+  case actions.INCREMENT_TOTAL_ANSWERED:
+    return Object.assign({}, state, {
+      totalAnswered: (state.totalAnswered++)
+    });
+
   default:
     return state;
   }
