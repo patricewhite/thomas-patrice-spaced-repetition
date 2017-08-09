@@ -97,6 +97,7 @@ export const fetchUser = accessToken => dispatch => {
   });
 };
 
+// TODO: Consider changing endpoint only return the single list object (not in an array).
 export const fetchQuestions = accessToken => dispatch => {
   dispatch(fetchQuestionsRequest());
   fetch('/api/questions', {
@@ -109,7 +110,7 @@ export const fetchQuestions = accessToken => dispatch => {
     }
     return res.json();
   }).then(dbQuestions => {
-    dispatch(fetchQuestionsSuccess(dbQuestions));
+    dispatch(fetchQuestionsSuccess(dbQuestions[0].questionsList));
   }).catch(err => {
     dispatch(fetchQuestionsError(err));
   });
@@ -161,12 +162,19 @@ class DLinkedList {
 
   remove(nthElement) {
     var currNode = this._findNthElement(nthElement);
-    if (!(currNode.next === null)) {
+    if (nthElement === 0) {
+      let node = this.head;
+      node.next.previous = null;
+      this.head = node.next;
+      node.next = null; // this might not matter
+    }
+    else if (!(currNode.next === null)) {
       currNode.previous.next = currNode.next;
       currNode.next.previous = currNode.previous;
       currNode.next = null;
       currNode.previous = null;
     }
+    this.length--;
   }
 }
 
@@ -204,9 +212,10 @@ const checkAnswer = (userAnswer, currentQuestion) => {
 export const loadUserQuestions = (initialList, currentDll = null, userAnswer = null, currentQuestion = null) => dispatch => {
   // handling initial load, when questionsList = dbQuestions
   const pullQuestion = (list) => {
+    console.log('list', list);
     let question = list.get(0);
     dispatch(setCurrentQuestion(question));
-    // list.remove(0);
+    list.remove(0);
     return list;
   };
 
@@ -217,7 +226,6 @@ export const loadUserQuestions = (initialList, currentDll = null, userAnswer = n
     }
 
     pullQuestion(dll);
-    console.log(dll);
     dispatch(setUserQuestions(dll));
     //return dll;
   }

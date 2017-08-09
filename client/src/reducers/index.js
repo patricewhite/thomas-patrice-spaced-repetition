@@ -16,7 +16,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  console.log(action.type, state.currentQuestion);
   switch (action.type) {
   case actions.FETCH_USER_REQUEST:
     return Object.assign({}, state, {

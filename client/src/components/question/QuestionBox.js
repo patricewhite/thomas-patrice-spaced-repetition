@@ -39,7 +39,6 @@ export default function QuestionBox(props) {
     }
     else return;
   };
-  console.log('!!!!', currentQuestion);
   return (
     <div className='questions-container'>
       {currentQuestion ? questionBox(currentQuestion) : initialBox}
