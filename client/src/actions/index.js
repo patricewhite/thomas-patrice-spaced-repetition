@@ -133,11 +133,11 @@ const checkAnswer = (userAnswer, currentQuestion) => {
 
 // pullQuestion(questionsList) => sets currentQuestion to be displayed.
 
-const spacedRep = (userAnswer=null, currentQuestion=null, questionsList) => {
+const spacedRep = (questionsList, userAnswer=null, currentQuestion=null) => {
   let dll = new DLinkedList();
   if(userAnswer && currentQuestion === null){
     for(let i = 0; i < questionsList.length; i++){
-      dll.insert(i+1, questionsList[i])
+      dll.insert(i, questionsList[i])
     }
   return dll;
   }
