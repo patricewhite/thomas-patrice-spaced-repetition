@@ -143,7 +143,7 @@ class DLinkedList {
 
   remove(nthElement) {
     var currNode = this._findNthElement(nthElement);
-    if (!(currNode.next == null)) {
+    if (!(currNode.next === null)) {
       currNode.previous.next = currNode.next;
       currNode.next.previous = currNode.previous;
       currNode.next = null;
@@ -154,23 +154,27 @@ class DLinkedList {
 
 function findLast(lst) {
   var currNode = lst.head;
-  while (!(currNode.next == null)) {
+  while (!(currNode.next === null)) {
     currNode = currNode.next;
-    console.log(currNode);
+    // console.log(currNode);
   }
   return currNode;
 }
 
-
-
 const checkAnswer = (userAnswer, currentQuestion) => {
-  if(userAnswer !== currentQuestion[0].answer){
+  if (userAnswer !== currentQuestion.answer){
     return false;
-  }else{
+  } else {
     return true;
   }
 };
 
+const pullQuestion = dll => dispatch => {
+  let question = dll.get(1);
+  dispatch(setCurrentQuestion(question));
+  dll.remove(1);//1
+  return dll;
+};
 // spacedRep(userAnswer, currentQuestion, questionsList) => Output an updated questions list.
     // if (checkAnswer) dispatch(totalCorrect++, totalAnswered++)
     // do some stuff
@@ -178,29 +182,31 @@ const checkAnswer = (userAnswer, currentQuestion) => {
 
 // pullQuestion(questionsList) => sets currentQuestion to be displayed.
 
-const spacedRep = (questionsList, userAnswer=null, currentQuestion=null) => {
-  let dll = new DLinkedList();
-  if(userAnswer && currentQuestion === null){
-    for(let i = 0; i < questionsList.length; i++){
-      dll.insert(i, questionsList[i]);
+const spacedRep = (initialList, currentDll = null, userAnswer = null, currentQuestion = null) => dispatch => {
+  // handling initial load, when questionsList = dbQuestions
+  if (userAnswer === null && currentQuestion === null && currentDll === null && initialList) {
+    const dll = new DLinkedList();
+    for (let i = 0; i < initialList.length; i++) {
+      dll.insert(i, initialList[i]);
     }
-    return dll;
+    pullQuestion(dll);
+    dispatch(setUserQuestions(dll));
+    //return dll;
   }
 
-  if(checkAnswer(userAnswer, currentQuestion) === false){
-    dispatch(totalCorrect++, totalAnswered++);
-    dll.insert(2, currentQuestion);
+  if (currentDll && userAnswer && currentQuestion) {
+    if(checkAnswer(userAnswer, currentQuestion) === true){
+      dispatch(incrementTotalCorrect());
+      dispatch(incrementTotalAnswered());
+      currentDll.insert(currentDll.length, currentQuestion);
+      pullQuestion(currentDll);
+      dispatch(setUserQuestions(currentDll));
+    }
+    else {
+      dispatch(incrementTotalAnswered());
+      currentDll.insert(2, currentQuestion);
+      pullQuestion(currentDll);
+      dispatch(setUserQuestions(currentDll));
+    }
   }
-
-  if(checkAnswer(userAnswer, currentQuestion) === true){
-    dispatch(totalAnswered++);
-    dll.insert(dll.length, currentQuestion);
-  }
-  dispatch(dll);
-};
-
-const pullQuestion = (dll) => {
-  let question = dll.get(1);
-  dispatch(question);
-  dll.remove(question);//1
 };
