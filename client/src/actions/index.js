@@ -63,6 +63,12 @@ export const setCurrentAnswer = currentAnswer => ({
   currentAnswer
 });
 
+export const UPDATE_CURRENT_STREAK = 'UPDATE_CURRENT_STREAK';
+export const updateCurrentStreak = boolean => ({
+  type: UPDATE_CURRENT_STREAK,
+  boolean
+});
+
 export const INCREMENT_TOTAL_CORRECT = 'INCREMENT_TOTAL_CORRECT';
 export const incrementTotalCorrect = () => ({
   type: INCREMENT_TOTAL_CORRECT
@@ -116,9 +122,6 @@ export const fetchQuestions = accessToken => dispatch => {
   });
 };
 
-// fetchQuestions() => that just pulls the array of questions off the db.
-
-//Doubly Linked List
 class DLinkedList {
   constructor() {
     this.length = 0;
@@ -187,28 +190,18 @@ function findLast(lst) {
   return currNode;
 }
 
-const checkAnswer = (userAnswer, currentQuestion) => {
-  if (userAnswer !== currentQuestion.answer){
+const checkAnswer = (userAnswer, currentQuestion) => dispatch => {
+  if (userAnswer !== currentQuestion.answer) {
+    dispatch(updateCurrentStreak(false));
     return false;
-  } else {
+  }
+  else {
+    dispatch(updateCurrentStreak(true));
     return true;
   }
 };
 
-// const pullQuestion = dll => dispatch => {
-//   console.log(dll);
-//   let question = dll.get(1);
-//   dispatch(setCurrentQuestion(question));
-//   dll.remove(1);//1
-//   return dll;
-// };
-// spacedRep(userAnswer, currentQuestion, questionsList) => Output an updated questions list.
-    // if (checkAnswer) dispatch(totalCorrect++, totalAnswered++)
-    // do some stuff
-    // dispatch(newQuestionsList)
-
-// pullQuestion(questionsList) => sets currentQuestion to be displayed.
-
+// Spaced Repetition Algorithm
 export const loadUserQuestions = (initialList, currentDll = null, userAnswer = null, currentQuestion = null) => dispatch => {
   // handling initial load, when questionsList = dbQuestions
   const pullQuestion = (list) => {

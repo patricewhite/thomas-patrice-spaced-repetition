@@ -37,6 +37,10 @@ export class App extends React.Component {
         loadUserQuestions={(currentDll, userAnswer, currentQuestion) => this.loadUserQuestions(currentDll, userAnswer, currentQuestion)}
         currentQuestion={this.props.currentQuestion}
         setCurrentAnswer = {(currentAnswer) => this.setCurrentAnswer(currentAnswer)}
+        currentStreak={this.props.currentStreak}
+        totalCorrect={this.props.totalCorrect}
+        totalAnswered={this.props.totalCorrect}
+       
       />
     );
   }
@@ -50,6 +54,7 @@ const mapStateToProps = state => {
     userQuestions: state.userQuestions,
     currentQuestion: state.currentQuestion,
     currentAnswer: state.currentAnswer,
+    currentStreak: state.currentStreak,
     totalCorrect: state.totalCorrect,
     totalAnswered: state.totalAnswered,
     currentUser: state.currentUser,
