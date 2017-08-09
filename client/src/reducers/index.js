@@ -8,6 +8,7 @@ const initialState = {
   userQuestions: [], // this list of questions to be asked. Out from the spacedRep.
   currentQuestion: null, // current question displayed. { _id: 234234, question: 'something', answer: 'something'},
   currentAnswer: null,
+  currentStreak: null,
   totalCorrect: 0,
   totalAnswered: 0,
 
@@ -77,6 +78,32 @@ const reducer = (state = initialState, action) => {
     return Object.assign({}, state, {
       currentAnswer: action.currentUser
     });
+
+  case actions.UPDATE_CURRENT_STREAK:
+    if (state.currentStreak >= 1) {
+      if (action.boolean) {
+        return Object.assign({}, state, {
+          currentStreak: state.currentStreak++
+        });
+      }
+      else {
+        return Object.assign({}, state, {
+          currentStreak: -1
+        });
+      }
+    }
+    else {
+      if (action.boolean) {
+        return Object.assign({}, state, {
+          currentStreak: 1
+        });
+      }
+      else {
+        return Object.assign({}, state, {
+          currentStreak: state.currentStreak--
+        });
+      }
+    }
 
   case actions.INCREMENT_TOTAL_CORRECT:
     return Object.assign({}, state, {

@@ -10,9 +10,6 @@ export default class QuestionPage extends React.Component {
     super(props);
     this.navProps = {
       profileImg: 'http://via.placeholder.com/150x150',
-      currentStreak: 15,
-      questionsCorrect: 15,
-      totalQuestions: 20
     };
     this.questProps = {
       onChange: (e) => console.log(e.target.value),
@@ -30,9 +27,9 @@ export default class QuestionPage extends React.Component {
       <div className='views-questions-page'>
         <NavBar
           profileImg={this.navProps.profileImg}
-          currentStreak={this.navProps.currentStreak}
-          questionsCorrect={this.navProps.questionsCorrect}
-          totalQuestions={this.navProps.totalQuestions}
+          currentStreak={this.props.currentStreak}
+          totalCorrect={this.props.totalCorrect}
+          totalAnswered={this.props.totalAnswered}
         />
 
         <QuestionBox
