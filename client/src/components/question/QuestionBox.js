@@ -26,9 +26,9 @@ export default function QuestionBox(props) {
             onSubmit={onSubmit}>
             <input
               type='text'
-              defaultValue='Enter your answer...'
+              placeholder='Enter your answer...'
               className='answer-input'
-              onChange={onChange}
+              onChange={(e)=>onChange(e.target.value)}
             />
             <button type='submit'>
               Submit

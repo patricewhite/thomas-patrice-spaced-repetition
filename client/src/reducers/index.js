@@ -76,7 +76,7 @@ const reducer = (state = initialState, action) => {
 
   case actions.SET_CURRENT_ANSWER:
     return Object.assign({}, state, {
-      currentAnswer: action.currentUser
+      currentAnswer: action.currentAnswer
     });
 
   case actions.UPDATE_CURRENT_STREAK:

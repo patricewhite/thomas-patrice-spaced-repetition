@@ -3,7 +3,7 @@ import NavBar from '../components/nav/NavBar';
 import QuestionBox from '../components/question/QuestionBox';
 import '../styles/QuestionPage.css';
 import * as Cookies from 'js-cookie';
-import {fetchQuestions} from '../actions/index';
+import {fetchQuestions, setCurrentQuestion} from '../actions/index';
 
 export default class QuestionPage extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class QuestionPage extends React.Component {
       profileImg: 'http://via.placeholder.com/150x150',
     };
     this.questProps = {
-      onChange: (e) => console.log(e.target.value),
+      onChange: this.props.setCurrentAnswer,
       onSubmit: (e) => e.preventDefault(),
       onStartQuiz: (e) => console.log(e.target)
     };
