@@ -97,6 +97,24 @@ export const fetchUser = accessToken => dispatch => {
   });
 };
 
+export const fetchQuestions = accessToken => dispatch => {
+  dispatch(fetchQuestionsRequest());
+  fet('/api/questions', {
+    headers: {
+      'Authorization': `Bearer ${accessToken}`
+    }
+  }).then(res => {
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }
+    return res.json();
+  }).then(dbQuestions => {
+    dispatch(fetchQuestionsSuccess(dbQuestions));
+  }).catch(err => {
+    dispatch(fetchQuestionsError(err));
+  });
+};
+
 // fetchQuestions() => that just pulls the array of questions off the db.
 
 //Doubly Linked List
