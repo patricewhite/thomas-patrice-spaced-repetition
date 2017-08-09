@@ -18,8 +18,8 @@ export class App extends React.Component {
   fetchQuestions() {
     this.props.dispatch(actions.fetchQuestions(this.props.accessToken));
   }
-  loadUserQuestions(initialList, currentDll, userAnswer, currentQuestion) {
-    this.props.dispatch(actions.loadUserQuestions(initialList, currentDll, userAnswer, currentQuestion));
+  loadUserQuestions(currentDll, userAnswer, currentQuestion) {
+    this.props.dispatch(actions.loadUserQuestions(this.props.dbQuestions, currentDll, userAnswer, currentQuestion));
   }
 
   render() {
@@ -30,9 +30,9 @@ export class App extends React.Component {
     return (
       <QuestionPage
         fetchQuestions={() => this.fetchQuestions()}
-        loadUserQuestions={(initialList, currentDll, userAnswer, currentQuestion) => this.loadUserQuestions(initialList, currentDll, userAnswer, currentQuestion)}
+        loadUserQuestions={(currentDll, userAnswer, currentQuestion) => this.loadUserQuestions(currentDll, userAnswer, currentQuestion)}
         currentQuestion={this.props.currentQuestion}
-        
+
       />
     );
   }
@@ -44,7 +44,7 @@ const mapStateToProps = state => {
     error: state.error,
     dbQuestions: state.dbQuestions,
     userQuestions: state.userQuestions,
-    currentQuestion: state.userQuestions,
+    currentQuestion: state.currentQuestion,
     currentAnswer: state.currentAnswer,
     totalCorrect: state.totalCorrect,
     totalAnswered: state.totalAnswered,

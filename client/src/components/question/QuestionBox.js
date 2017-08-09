@@ -7,7 +7,7 @@ export default function QuestionBox(props) {
       <h2>Ready to go?</h2>
       <button
         type='button'
-        onClick={onStartQuiz}
+        onClick={() => onStartQuiz(null, null, currentQuestion)}
         >Let's Go!
       </button>
     </div>

@@ -53,10 +53,10 @@ export default class QuestionPage extends React.Component {
         />
 
         <QuestionBox
-          currentQuestion={this.questProps.initialQuestion}
+          currentQuestion={this.props.currentQuestion}
           onChange={this.questProps.onChange}
           onSubmit={this.questProps.onSubmit}
-          onStartQuiz={this.questProps.onStartQuiz}
+          onStartQuiz={this.props.loadUserQuestions}
         />
       </div>
     );

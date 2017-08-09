@@ -187,12 +187,13 @@ const checkAnswer = (userAnswer, currentQuestion) => {
   }
 };
 
-const pullQuestion = dll => dispatch => {
-  let question = dll.get(1);
-  dispatch(setCurrentQuestion(question));
-  dll.remove(1);//1
-  return dll;
-};
+// const pullQuestion = dll => dispatch => {
+//   console.log(dll);
+//   let question = dll.get(1);
+//   dispatch(setCurrentQuestion(question));
+//   dll.remove(1);//1
+//   return dll;
+// };
 // spacedRep(userAnswer, currentQuestion, questionsList) => Output an updated questions list.
     // if (checkAnswer) dispatch(totalCorrect++, totalAnswered++)
     // do some stuff
@@ -202,12 +203,21 @@ const pullQuestion = dll => dispatch => {
 
 export const loadUserQuestions = (initialList, currentDll = null, userAnswer = null, currentQuestion = null) => dispatch => {
   // handling initial load, when questionsList = dbQuestions
+  const pullQuestion = (list) => {
+    let question = list.get(0);
+    dispatch(setCurrentQuestion(question));
+    // list.remove(0);
+    return list;
+  };
+
   if (userAnswer === null && currentQuestion === null && currentDll === null && initialList) {
     const dll = new DLinkedList();
     for (let i = 0; i < initialList.length; i++) {
       dll.insert(i, initialList[i]);
     }
+
     pullQuestion(dll);
+    console.log(dll);
     dispatch(setUserQuestions(dll));
     //return dll;
   }
