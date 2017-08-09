@@ -8,9 +8,6 @@ import {fetchQuestions} from '../actions/index';
 export default class QuestionPage extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   questions: []
-    // };
     this.navProps = {
       profileImg: 'http://via.placeholder.com/150x150',
       currentStreak: 15,
@@ -25,7 +22,7 @@ export default class QuestionPage extends React.Component {
   }
 
   componentDidMount() {
-    // currentQuestion ={this.props.fetchQuestions()};
+    this.props.fetchQuestions();
   }
 
   render() {
