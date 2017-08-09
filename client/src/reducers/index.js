@@ -4,9 +4,9 @@ const initialState = {
   loading: false,
   error: null,
 
-  dbQuestions: [], // a fixed array of questions from the DB.
+  dbQuestions: [{question: 'something', answer: 'something'}], // a fixed array of questions from the DB.
   userQuestions: [], // this list of questions to be asked. Out from the spacedRep.
-  currentQuestion: {}, // current question displayed. { _id: 234234, question: 'something', answer: 'something'},
+  currentQuestion: null, // current question displayed. { _id: 234234, question: 'something', answer: 'something'},
   currentAnswer: null,
   totalCorrect: 0,
   totalAnswered: 0,
@@ -16,6 +16,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+  console.log(action.type, state.currentQuestion);
   switch (action.type) {
   case actions.FETCH_USER_REQUEST:
     return Object.assign({}, state, {

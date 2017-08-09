@@ -5,14 +5,26 @@
 
 .questions-container {
   align-self: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   border: 1px solid black;
   border-radius: 3px;
   margin-top: 5em;
   width: 30em;
   height: 20em;
+}
+
+.initial-question-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.current-question-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .question-controls {

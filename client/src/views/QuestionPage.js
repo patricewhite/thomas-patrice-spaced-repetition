@@ -15,9 +15,11 @@ export default class QuestionPage extends React.Component {
       totalQuestions: 20
     };
     this.questProps = {
+      initialQuestion: null, // to simulate page on initial load
       currentQuestion: 'This is a question...',
       onChange: (e) => console.log(e.target.value),
-      onSubmit: (e) => e.preventDefault()
+      onSubmit: (e) => e.preventDefault(),
+      onStartQuiz: (e) => console.log(e.target)
     };
   }
 
@@ -36,9 +38,10 @@ export default class QuestionPage extends React.Component {
         />
 
         <QuestionBox
-          currentQuestion={this.questProps.currentQuestion}
+          currentQuestion={this.props.currentQuestion}
           onChange={this.questProps.onChange}
           onSubmit={this.questProps.onSubmit}
+          onStartQuiz={this.props.loadUserQuestions}
         />
       </div>
     );
