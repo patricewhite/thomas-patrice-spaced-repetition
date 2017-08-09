@@ -2,8 +2,16 @@ import React from 'react';
 
 export default function QuestionBox(props) {
   const { currentQuestion, onChange, onSubmit } = props;
-  return (
-    <div className='questions-container'>
+  const initialBox = (
+    <div className='initial-question-container'>
+      <h2>Ready to go?</h2>
+      <button
+        type='button'>Let's Go!
+      </button>
+    </div>
+  );
+  const questionBox = (
+    <div className='current-question-container'>
       <div className='question-controls'>
         <a href='#'>Previous</a>
         <a href='#'>I don't know!</a>
@@ -22,6 +30,11 @@ export default function QuestionBox(props) {
           Submit
         </button>
       </form>
+    </div>
+  );
+  return (
+    <div className='questions-container'>
+      {currentQuestion ? questionBox : initialBox}
     </div>
   );
 }
