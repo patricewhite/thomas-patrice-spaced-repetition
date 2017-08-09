@@ -190,14 +190,18 @@ function findLast(lst) {
   return currNode;
 }
 
-const checkAnswer = (userAnswer, currentQuestion) => {
-  if (userAnswer !== currentQuestion.answer){
+const checkAnswer = (userAnswer, currentQuestion) => dispatch => {
+  if (userAnswer !== currentQuestion.answer) {
+    dispatch(updateCurrentStreak(false));
     return false;
-  } else {
+  }
+  else {
+    dispatch(updateCurrentStreak(true));
     return true;
   }
 };
 
+// Spaced Repetition Algorithm
 export const loadUserQuestions = (initialList, currentDll = null, userAnswer = null, currentQuestion = null) => dispatch => {
   // handling initial load, when questionsList = dbQuestions
   const pullQuestion = (list) => {
