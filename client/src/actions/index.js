@@ -63,6 +63,12 @@ export const setCurrentAnswer = currentAnswer => ({
   currentAnswer
 });
 
+export const UPDATE_CURRENT_STREAK = 'UPDATE_CURRENT_STREAK';
+export const updateCurrentStreak = boolean => ({
+  type: UPDATE_CURRENT_STREAK,
+  boolean
+});
+
 export const INCREMENT_TOTAL_CORRECT = 'INCREMENT_TOTAL_CORRECT';
 export const incrementTotalCorrect = () => ({
   type: INCREMENT_TOTAL_CORRECT
