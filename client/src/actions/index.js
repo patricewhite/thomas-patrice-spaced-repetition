@@ -99,7 +99,7 @@ export const fetchUser = accessToken => dispatch => {
 
 export const fetchQuestions = accessToken => dispatch => {
   dispatch(fetchQuestionsRequest());
-  fet('/api/questions', {
+  fetch('/api/questions', {
     headers: {
       'Authorization': `Bearer ${accessToken}`
     }
