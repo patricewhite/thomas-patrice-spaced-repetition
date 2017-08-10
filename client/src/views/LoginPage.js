@@ -24,8 +24,8 @@ export default function LoginPage() {
   return (
     <div className='views-login-page'>
       <div className='hero-container'>
-        <h1>How Do I Vim?</h1>
-        <p>Learn how to more than just exit.</p>
+        <h1 className='main-heading'>How Do I Vim?</h1>
+        <p className='sub-heading'>Learn how to more than just exit.</p>
       </div>
       <hr className='content-divider' />
       <div className='login-content-container'>

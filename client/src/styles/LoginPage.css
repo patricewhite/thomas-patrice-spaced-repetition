@@ -1,3 +1,6 @@
+* {
+  font-family: 'PT Mono', monospace;
+}
 .views-login-page {
   display: flex;
   flex-direction: column;
@@ -11,6 +14,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.main-heading {
+  font-size: 8em;
+  font-family: 'PT Mono', monospace;
+  text-shadow: 6px 7px 17px #161616;
+}
+.sub-heading {
+  font-size: 2em;
 }
 .content-divider {
   align-self: center;
