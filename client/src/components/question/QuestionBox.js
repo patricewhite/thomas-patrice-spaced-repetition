@@ -1,7 +1,12 @@
 import React from 'react';
 
 export default function QuestionBox(props) {
-  const { currentQuestion, onChange, onSubmit, loadUserQuestions } = props;
+  const { currentQuestion, onChange, loadUserQuestions, userQuestions, currentAnswer } = props;
+  const onSubmit = (e) => {
+    e.preventDefault();
+    loadUserQuestions(userQuestions, currentAnswer, currentQuestion);
+
+  }
   const initialBox = (
     <div className='initial-question-container'>
       <h2>Ready to go?</h2>
@@ -23,12 +28,12 @@ export default function QuestionBox(props) {
           <h2 className='question-text'>{currentQuestion.question}</h2>
           <form
             className='answer-form'
-            onSubmit={onSubmit}>
+            onSubmit ={ (e) => onSubmit(e)}>
             <input
               type='text'
               placeholder='Enter your answer...'
               className='answer-input'
-              onChange={(e)=>onChange(e.target.value)}
+              onChange={(e) => onChange(e.target.value)}
             />
             <button type='submit'>
               Submit

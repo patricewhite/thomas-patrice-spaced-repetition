@@ -122,6 +122,11 @@ export const fetchQuestions = accessToken => dispatch => {
   });
 };
 
+// export const submit = () => (dispatch, getState) => {
+//   let currentAnswer = getState().currentAnswer;
+//
+// };
+
 class DLinkedList {
   constructor() {
     this.length = 0;
@@ -190,19 +195,10 @@ function findLast(lst) {
   return currNode;
 }
 
-const checkAnswer = (userAnswer, currentQuestion) => dispatch => {
-  if (userAnswer !== currentQuestion.answer) {
-    dispatch(updateCurrentStreak(false));
-    return false;
-  }
-  else {
-    dispatch(updateCurrentStreak(true));
-    return true;
-  }
-};
 
 // Spaced Repetition Algorithm
-export const loadUserQuestions = (initialList, currentDll = null, userAnswer = null, currentQuestion = null) => dispatch => {
+export const loadUserQuestions = (initialList, currentDll = null, userAnswer = null, currentQuestion = null) => dispatch =>{
+  console.log('start of rep function','list', initialList,'currDll', currentDll,'userA',userAnswer, 'question', currentQuestion );
   // handling initial load, when questionsList = dbQuestions
   const pullQuestion = (list) => {
     console.log('list', list);
@@ -212,19 +208,32 @@ export const loadUserQuestions = (initialList, currentDll = null, userAnswer = n
     return list;
   };
 
+
   if (userAnswer === null && currentQuestion === null && currentDll === null && initialList) {
     const dll = new DLinkedList();
     for (let i = 0; i < initialList.length; i++) {
       dll.insert(i, initialList[i]);
     }
-
+    console.log('pulling')
     pullQuestion(dll);
     dispatch(setUserQuestions(dll));
     //return dll;
   }
-
   if (currentDll && userAnswer && currentQuestion) {
-    if(checkAnswer(userAnswer, currentQuestion) === true){
+    const checkAnswer = (userAnswer, currentQuestion) => {
+      console.log('check', userAnswer, currentQuestion);
+      if (userAnswer !== currentQuestion.answer) {
+        dispatch(updateCurrentStreak(false));
+        return false;
+      }
+      else {
+        dispatch(updateCurrentStreak(true));
+        return true;
+      }
+    };
+    const checked = checkAnswer(userAnswer, currentQuestion);
+    if(checked === true){
+      console.log('true')
       dispatch(incrementTotalCorrect());
       dispatch(incrementTotalAnswered());
       currentDll.insert(currentDll.length, currentQuestion);
@@ -232,6 +241,7 @@ export const loadUserQuestions = (initialList, currentDll = null, userAnswer = n
       dispatch(setUserQuestions(currentDll));
     }
     else {
+      console.log('false')
       dispatch(incrementTotalAnswered());
       currentDll.insert(2, currentQuestion);
       pullQuestion(currentDll);

@@ -14,11 +14,6 @@ export default class QuestionPage extends React.Component {
     };
     this.questProps = {
       onChange: this.props.setCurrentAnswer,
-      onSubmit: (e) => {
-        e.preventDefault()
-        alert(this.props.currentAnswer);
-
-      },
       onStartQuiz: (e) => console.log(e.target)
     };
   }
@@ -39,9 +34,11 @@ export default class QuestionPage extends React.Component {
 
         <QuestionBox
           currentQuestion={this.props.currentQuestion}
-          onChange={this.questProps.onChange}
-          onSubmit={this.questProps.onSubmit}
+          onChange={this.props.setCurrentAnswer}
+          onSubmit={this.props.onSubmit}
           loadUserQuestions={this.props.loadUserQuestions}
+          currentAnswer={this.props.currentAnswer}
+          userQuestions = {this.props.userQuestions}
         />
       </div>
     );
