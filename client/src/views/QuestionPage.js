@@ -38,7 +38,7 @@ export default class QuestionPage extends React.Component {
           onSubmit={this.props.onSubmit}
           loadUserQuestions={this.props.loadUserQuestions}
           currentAnswer={this.props.currentAnswer}
-          userQuestions = {this.props.userQuestions}
+          userQuestions={this.props.userQuestions}
         />
       </div>
     );
