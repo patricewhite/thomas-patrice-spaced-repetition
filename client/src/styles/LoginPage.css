@@ -12,6 +12,12 @@
   flex-direction: column;
   align-items: center;
 }
+.content-divider {
+  align-self: center;
+  background-color: #f0f0f0;
+  width: 70%;
+  margin: 3em 0;
+}
 .login-content-container {
   flex-grow: 1;
   display: flex;

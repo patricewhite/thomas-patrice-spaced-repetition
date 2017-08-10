@@ -27,6 +27,7 @@ export default function LoginPage() {
         <h1>How Do I Vim?</h1>
         <p>Learn how to more than just exit.</p>
       </div>
+      <hr className='content-divider' />
       <div className='login-content-container'>
         <ContentBox
           imgSrc={loginContent.box1.imgSrc}
