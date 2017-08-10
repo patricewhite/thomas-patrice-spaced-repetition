@@ -24,7 +24,6 @@ export default function LoginPage() {
   return (
     <div className='views-login-page'>
       <div className='hero-container'>
-        <img src='http://via.placeholder.com/1300x500' alt='Hero' />
         <h1>How Do I Vim?</h1>
         <p>Learn how to more than just exit.</p>
       </div>
