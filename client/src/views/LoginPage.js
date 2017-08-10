@@ -6,17 +6,17 @@ import '../styles/LoginPage.css';
 export default function LoginPage() {
   const loginContent = {
     box1: {
-      imgSrc: 'http://via.placeholder.com/250x250',
+      imgSrc: '../../frust1-300x251.jpg',
       imgAlt: 'Categories',
       title: 'Select categories...'
     },
     box2: {
-      imgSrc: 'http://via.placeholder.com/250x250',
+      imgSrc: '../../ka41.jpg',
       imgAlt: 'Sessions',
       title: 'Save your sessions...'
     },
     box3: {
-      imgSrc: 'http://via.placeholder.com/250x250',
+      imgSrc: '../../wizard.jpg',
       imgAlt: 'Other Stuff',
       title: 'Here is some other stuff...'
     }

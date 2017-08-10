@@ -5,6 +5,7 @@ export default function ContentBox(props) {
   return (
     <div className='login-content-box'>
       <img
+        className='content-box-img'
         src={imgSrc}
         alt={imgAlt}
       />

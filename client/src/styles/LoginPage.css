@@ -29,6 +29,12 @@
   width: 70%;
   margin: 3em 0;
 }
+
+.content-box-img {
+  height: 250px;
+  width: auto;
+}
+
 .login-content-container {
   flex-grow: 1;
   display: flex;
