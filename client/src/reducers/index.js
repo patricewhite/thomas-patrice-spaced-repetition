@@ -83,7 +83,7 @@ const reducer = (state = initialState, action) => {
     if (state.currentStreak >= 1) {
       if (action.boolean) {
         return Object.assign({}, state, {
-          currentStreak: state.currentStreak++
+          currentStreak: (state.currentStreak + 1)
         });
       }
       else {
@@ -100,19 +100,20 @@ const reducer = (state = initialState, action) => {
       }
       else {
         return Object.assign({}, state, {
-          currentStreak: state.currentStreak--
+          currentStreak: (state.currentStreak - 1)
         });
       }
     }
 
   case actions.INCREMENT_TOTAL_CORRECT:
+
     return Object.assign({}, state, {
-      totalCorrect: (state.totalCorrect++)
+      totalCorrect: (state.totalCorrect + 1)
     });
 
   case actions.INCREMENT_TOTAL_ANSWERED:
     return Object.assign({}, state, {
-      totalAnswered: (state.totalAnswered++)
+      totalAnswered: (state.totalAnswered + 1)
     });
 
   default:

@@ -198,10 +198,8 @@ function findLast(lst) {
 
 // Spaced Repetition Algorithm
 export const loadUserQuestions = (initialList, currentDll = null, userAnswer = null, currentQuestion = null) => dispatch =>{
-  console.log('start of rep function','list', initialList,'currDll', currentDll,'userA',userAnswer, 'question', currentQuestion );
   // handling initial load, when questionsList = dbQuestions
   const pullQuestion = (list) => {
-    console.log('list', list);
     let question = list.get(0);
     dispatch(setCurrentQuestion(question));
     list.remove(0);
@@ -214,14 +212,12 @@ export const loadUserQuestions = (initialList, currentDll = null, userAnswer = n
     for (let i = 0; i < initialList.length; i++) {
       dll.insert(i, initialList[i]);
     }
-    console.log('pulling')
     pullQuestion(dll);
     dispatch(setUserQuestions(dll));
     //return dll;
   }
   if (currentDll && userAnswer && currentQuestion) {
     const checkAnswer = (userAnswer, currentQuestion) => {
-      console.log('check', userAnswer, currentQuestion);
       if (userAnswer !== currentQuestion.answer) {
         dispatch(updateCurrentStreak(false));
         return false;
@@ -233,7 +229,6 @@ export const loadUserQuestions = (initialList, currentDll = null, userAnswer = n
     };
     const checked = checkAnswer(userAnswer, currentQuestion);
     if(checked === true){
-      console.log('true')
       dispatch(incrementTotalCorrect());
       dispatch(incrementTotalAnswered());
       currentDll.insert(currentDll.length, currentQuestion);
@@ -241,7 +236,6 @@ export const loadUserQuestions = (initialList, currentDll = null, userAnswer = n
       dispatch(setUserQuestions(currentDll));
     }
     else {
-      console.log('false')
       dispatch(incrementTotalAnswered());
       currentDll.insert(2, currentQuestion);
       pullQuestion(currentDll);
