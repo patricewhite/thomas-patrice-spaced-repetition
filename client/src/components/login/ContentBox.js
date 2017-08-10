@@ -9,7 +9,9 @@ export default function ContentBox(props) {
         src={imgSrc}
         alt={imgAlt}
       />
-      <h3>{title}</h3>
+      <div className='content-box-title'>
+        <h3>{title}</h3>
+      </div>
     </div>
   );
 }

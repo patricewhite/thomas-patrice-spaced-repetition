@@ -7,25 +7,25 @@ export default function LoginPage() {
   const loginContent = {
     box1: {
       imgSrc: '../../frust1-300x251.jpg',
-      imgAlt: 'Categories',
-      title: 'Select categories...'
+      imgAlt: 'Biting a computer',
+      title: 'Tired of being an embarassment to your friends and family?'
     },
     box2: {
       imgSrc: '../../ka41.jpg',
       imgAlt: 'Sessions',
-      title: 'Save your sessions...'
+      title: 'Ever wanted to just end it?'
     },
     box3: {
       imgSrc: '../../wizard.jpg',
       imgAlt: 'Other Stuff',
-      title: 'Here is some other stuff...'
+      title: 'Go from 0 to hero by lerning 2 Vim with us!'
     }
   };
   return (
     <div className='views-login-page'>
       <div className='hero-container'>
-        <h1 className='main-heading'>How Do I Vim?</h1>
-        <p className='sub-heading'>Learn how to more than just exit.</p>
+        <h1 className='main-heading'>How do I Vim?</h1>
+        <p className='sub-heading'>There's more to it than just exiting.</p>
       </div>
       <hr className='content-divider' />
       <div className='login-content-container'>

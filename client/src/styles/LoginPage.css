@@ -16,7 +16,7 @@
   align-items: center;
 }
 .main-heading {
-  font-size: 8em;
+  font-size: 9em;
   font-family: 'PT Mono', monospace;
   text-shadow: 6px 7px 17px #161616;
 }
@@ -33,6 +33,11 @@
 .content-box-img {
   height: 250px;
   width: auto;
+}
+.content-box-title {
+  width: 250px;
+  text-align: center;
+  line-height: 1.5em;
 }
 
 .login-content-container {
