@@ -19,7 +19,7 @@ This allows you to see who is using the app but, is restricted due to google oAu
 **GET** http://young-castle-67864.herokuapp.com/api/questions <br/>
 This allows you to see the list of questions but, is restricted due to google oAuth <br/>
 
-## Run locally
+## Run Locally
 
 ```sh
 $ git clone https://github.com/thinkful-c11/thomas-patrice-spaced-repetition.git
