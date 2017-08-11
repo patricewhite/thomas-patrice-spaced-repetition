@@ -9,13 +9,13 @@ export default class QuestionPage extends React.Component {
   constructor(props) {
     super(props);
     this.navProps = {
-      profileImg: 'http://via.placeholder.com/150x150',
+      profileImg: 'http://fillmurray.com/125/125',
     };
-    this.questProps = {
-      onChange: this.props.setCurrentAnswer,
-      onStartQuiz: (e) => console.log(e.target),
-      result: this.props.setAnswerCheck
-    };
+    // this.questProps = {
+    //   onChange: this.props.setCurrentAnswer,
+    //   onStartQuiz: (e) => console.log(e.target),
+    //   result: this.props.setAnswerCheck
+    // };
   }
 
   componentDidMount() {

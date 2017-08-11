@@ -8,6 +8,10 @@
 .profile-image {
   flex-grow: 1;
 }
+.profile-image > img {
+  border-radius: 50%;
+  padding: 10px;
+}
 
 .scoreboard-container {
   display: flex;
