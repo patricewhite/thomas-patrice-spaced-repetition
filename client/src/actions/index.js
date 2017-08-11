@@ -79,6 +79,13 @@ export const incrementTotalAnswered = () => ({
   type: INCREMENT_TOTAL_ANSWERED
 });
 
+export const SET_ANSWER_CHECK = 'SET_ANSWER_CHECK';
+export const setAnswerCheck = (currentAnswer, correct) => ({
+  type: SET_ANSWER_CHECK,
+  currentAnswer,
+  correct
+});
+
 export const fetchUser = accessToken => dispatch => {
   dispatch(fetchUserRequest());
   dispatch(setAccessToken(accessToken));
@@ -186,16 +193,6 @@ class DLinkedList {
   }
 }
 
-function findLast(lst) {
-  var currNode = lst.head;
-  while (!(currNode.next === null)) {
-    currNode = currNode.next;
-    // console.log(currNode);
-  }
-  return currNode;
-}
-
-
 // Spaced Repetition Algorithm
 export const loadUserQuestions = (initialList, currentDll = null, userAnswer = null, currentQuestion = null) => dispatch =>{
   // handling initial load, when questionsList = dbQuestions
@@ -218,12 +215,16 @@ export const loadUserQuestions = (initialList, currentDll = null, userAnswer = n
   }
   if (currentDll && userAnswer && currentQuestion) {
     const checkAnswer = (userAnswer, currentQuestion) => {
+      console.log('ua',userAnswer)
+      //dispatch(setAnswerCheck(userAnswer));
       if (userAnswer !== currentQuestion.answer) {
         dispatch(updateCurrentStreak(false));
+        dispatch(setAnswerCheck(userAnswer, false));
         return false;
       }
       else {
         dispatch(updateCurrentStreak(true));
+        dispatch(setAnswerCheck(userAnswer, true));
         return true;
       }
     };
