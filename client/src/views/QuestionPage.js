@@ -4,7 +4,6 @@ import QuestionBox from '../components/question/QuestionBox';
 import Feedback from '../components/question/feedback';
 import '../styles/QuestionPage.css';
 import * as Cookies from 'js-cookie';
-import store from '../store';
 
 export default class QuestionPage extends React.Component {
   constructor(props) {

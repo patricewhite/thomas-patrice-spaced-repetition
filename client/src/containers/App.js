@@ -15,8 +15,8 @@ export class App extends React.Component {
     }
   }
 
-  setAnswerCheck(currentAnswer){
-    this.props.dispatch(actions.setAnswerCheck(currentAnswer));
+  setAnswerCheck(currentAnswer, correct){
+    this.props.dispatch(actions.setAnswerCheck(currentAnswer, correct));
   }
 
   setCurrentAnswer(currentAnswer){
@@ -45,8 +45,8 @@ export class App extends React.Component {
           totalCorrect={this.props.totalCorrect}
           totalAnswered={this.props.totalAnswered}
           currentStreak={this.props.currentStreak}
-          setAnswerCheck={(currentAnswer)=> this.setAnswerCheck(currentAnswer)}
           answerCheck={this.props.answerCheck}
+          setAnswerCheck={(currentAnswer, correct)=> this.setAnswerCheck(currentAnswer, correct)}
         />
     );
   }

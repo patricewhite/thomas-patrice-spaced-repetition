@@ -80,7 +80,8 @@ const reducer = (state = initialState, action) => {
 
   case actions.SET_ANSWER_CHECK:
     return Object.assign({}, state, {
-      checkAnswer: action.checkAnswer
+      answerCheck: {previousAns: action.currentAnswer,
+      correct: action.correct}
     });
 
   case actions.UPDATE_CURRENT_STREAK:

@@ -7,23 +7,23 @@ export default function QuestionBox(props) {
     loadUserQuestions(userQuestions, currentAnswer, currentQuestion);
   }
 
-  const result = () => {
-    console.log(answerCheck)
-    while(answerCheck){
-      if(answerCheck === currentQuestion.answer){
-          return ( <div className='results' >
-            Correct
-          </div>
-        )
-      }else{
-        return (<div className='results' >
-          Wrong
-          Correct answer: {currentQuestion.answer}
-        </div>
-      )
-      }
-    }
-  }
+  // const result = () => {
+  //   console.log(answerCheck)
+  //   while(answerCheck){
+  //     if(answerCheck === currentQuestion.answer){
+  //         return ( <div className='results' >
+  //           Correct
+  //         </div>
+  //       )
+  //     }else{
+  //       return (<div className='results' >
+  //         Wrong
+  //         Correct answer: {currentQuestion.answer}
+  //       </div>
+  //     )
+  //     }
+  //   }
+  // }
 
 
 

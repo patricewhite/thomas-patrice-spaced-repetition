@@ -80,9 +80,10 @@ export const incrementTotalAnswered = () => ({
 });
 
 export const SET_ANSWER_CHECK = 'SET_ANSWER_CHECK';
-export const setAnswerCheck = currentAnswer => ({
+export const setAnswerCheck = (currentAnswer, correct) => ({
   type: SET_ANSWER_CHECK,
-  currentAnswer
+  currentAnswer,
+  correct
 });
 
 export const fetchUser = accessToken => dispatch => {
@@ -214,12 +215,16 @@ export const loadUserQuestions = (initialList, currentDll = null, userAnswer = n
   }
   if (currentDll && userAnswer && currentQuestion) {
     const checkAnswer = (userAnswer, currentQuestion) => {
+      console.log('ua',userAnswer)
+      //dispatch(setAnswerCheck(userAnswer));
       if (userAnswer !== currentQuestion.answer) {
         dispatch(updateCurrentStreak(false));
+        dispatch(setAnswerCheck(userAnswer, false));
         return false;
       }
       else {
         dispatch(updateCurrentStreak(true));
+        dispatch(setAnswerCheck(userAnswer, true));
         return true;
       }
     };
