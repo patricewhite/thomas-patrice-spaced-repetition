@@ -81,3 +81,11 @@
 .answer-input {
     width: 200px;
 }
+
+.results-container {
+  align-self: center;
+  margin-top: 40px;
+  padding: 30px;
+  border-radius: 2px;
+  border: 1px solid black;
+}

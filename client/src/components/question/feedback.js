@@ -1,16 +1,15 @@
 import React from 'react';
 
 export default function Feedback(props) {
-  console.log('seee');
-  console.log(props);
   const result = () => {
-    while(props.answerCheck){
-      if(props.answerCheck.correct === true){
+    while (props.answerCheck) {
+      if (props.answerCheck.correct === true) {
         return ( <div className='results2' >
             Correct
           </div>
         );
-      }else{
+      }
+      else {
         return (<div className='results2' >
           Wrong
           Correct answer: {props.answerCheck.previousQ.answer}
@@ -21,7 +20,7 @@ export default function Feedback(props) {
   };
 
   return (
-    <div className='results2'>
+    <div className='results-container'>
       {result()}
     </div>
   );
