@@ -6,18 +6,18 @@ to know to easily maneuver through the editor.
 
 ## Technology Used
 
-**FrontEnd**: CSS, JavaScript, React, Redux
-**BackEnd**: NodeJs, Express, MongoDB, Mongoose, Mlab
-**Deployment**: Heroku
+**FrontEnd**: CSS, JavaScript, React, Redux <br/>
+**BackEnd**: NodeJs, Express, MongoDB, Mongoose, Mlab <br/>
+**Deployment**: Heroku <br/>
 
 ## Documentation of API
 
-**GET** http://young-castle-67864.herokuapp.com/api/auth/logout
-This allows you to logout out of our app with google oAuth
-**GET** http://young-castle-67864.herokuapp.com/api/me
-This allows you to see who is using the app but, is restricted due to google oAuth
-**GET** http://young-castle-67864.herokuapp.com/api/questions
-This allows you to see the list of questions but, is restricted due to google oAuth
+**GET** http://young-castle-67864.herokuapp.com/api/auth/logout <br/>
+This allows you to logout out of our app with google oAuth <br/>
+**GET** http://young-castle-67864.herokuapp.com/api/me <br/>
+This allows you to see who is using the app but, is restricted due to google oAuth <br/>
+**GET** http://young-castle-67864.herokuapp.com/api/questions <br/>
+This allows you to see the list of questions but, is restricted due to google oAuth <br/>
 
 ## Run locally
 
