@@ -15,7 +15,7 @@
 
 ## Wire Frames
 
-![Login Screen] (https://wireframe.cc/PAFKuo) <br/>
+![Login Screen](https://wireframe.cc/PAFKuo) <br/>
 ![Questions Page](https://wireframe.cc/jLggtc) <br/>
 
 ## Data Flow for Spaced Rep Algorithm
