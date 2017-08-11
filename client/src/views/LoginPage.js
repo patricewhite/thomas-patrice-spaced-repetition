@@ -6,28 +6,28 @@ import '../styles/LoginPage.css';
 export default function LoginPage() {
   const loginContent = {
     box1: {
-      imgSrc: 'http://via.placeholder.com/250x250',
-      imgAlt: 'Categories',
-      title: 'Select categories...'
+      imgSrc: '../../frust1-300x251.jpg',
+      imgAlt: 'Biting a computer',
+      title: 'Tired of being an embarassment to your friends and family?'
     },
     box2: {
-      imgSrc: 'http://via.placeholder.com/250x250',
+      imgSrc: '../../ka41.jpg',
       imgAlt: 'Sessions',
-      title: 'Save your sessions...'
+      title: 'Ever wanted to just end it?'
     },
     box3: {
-      imgSrc: 'http://via.placeholder.com/250x250',
+      imgSrc: '../../wizard.jpg',
       imgAlt: 'Other Stuff',
-      title: 'Here is some other stuff...'
+      title: 'Go from 0 to hero by lerning 2 Vim with us!'
     }
   };
   return (
     <div className='views-login-page'>
       <div className='hero-container'>
-        <img src='http://via.placeholder.com/1300x500' alt='Hero' />
-        <h1>How Do I Vim?</h1>
-        <p>Learn how to more than just exit.</p>
+        <h1 className='main-heading'>How do I Vim?</h1>
+        <p className='sub-heading'>There's more to it than just exiting.</p>
       </div>
+      <hr className='content-divider' />
       <div className='login-content-container'>
         <ContentBox
           imgSrc={loginContent.box1.imgSrc}

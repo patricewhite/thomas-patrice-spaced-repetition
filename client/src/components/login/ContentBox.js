@@ -5,10 +5,13 @@ export default function ContentBox(props) {
   return (
     <div className='login-content-box'>
       <img
+        className='content-box-img'
         src={imgSrc}
         alt={imgAlt}
       />
-      <h3>{title}</h3>
+      <div className='content-box-title'>
+        <h3>{title}</h3>
+      </div>
     </div>
   );
 }

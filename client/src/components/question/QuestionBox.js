@@ -5,6 +5,10 @@ export default function QuestionBox(props) {
   const onSubmit = (e) => {
     e.preventDefault();
     loadUserQuestions(userQuestions, currentAnswer, currentQuestion);
+
+    onChange('');
+  };
+
   }
 
   // const result = () => {
@@ -24,6 +28,7 @@ export default function QuestionBox(props) {
   //     }
   //   }
   // }
+
 
 
 
@@ -54,6 +59,7 @@ export default function QuestionBox(props) {
               placeholder='Enter your answer...'
               className='answer-input'
               onChange={(e) => onChange(e.target.value)}
+              value={currentAnswer}
             />
             <button type='submit'>
               Submit
