@@ -24,10 +24,10 @@ export default function QuestionBox(props) {
     if (currentQuestion) {
       return (
         <div className='current-question-container'>
-          <div className='question-controls'>
+          {/* <div className='question-controls'>
             <a href='#'>Previous</a>
             <a href='#'>I don't know!</a>
-          </div>
+          </div> */}
           <h2 className='question-text'>{currentQuestion.question}</h2>
           <form
             className='answer-form'
@@ -39,7 +39,9 @@ export default function QuestionBox(props) {
               onChange={(e) => onChange(e.target.value)}
               value={currentAnswer}
             />
-            <button type='submit'>
+            <button
+              className='button submit-answer-button'
+              type='submit'>
               Submit
             </button>
           </form>

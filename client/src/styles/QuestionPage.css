@@ -69,6 +69,7 @@
 }
 
 .question-text {
+  margin-top: 30px;
   padding: 0 1.5em;
 }
 
@@ -76,4 +77,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0 1.5em 1.5em 1.5em;
+}
+.answer-input {
+    width: 200px;
 }
