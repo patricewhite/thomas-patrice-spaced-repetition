@@ -1,18 +1,10 @@
 import React from 'react';
-import QuestionPage from '.../views/QuestionPage';
 
-export default class Feedback extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  console.log(this.props);
-
-  componentWillUpdate() {
-    console.log(currentQuestion.answer);
-  }
-
-  result () => {
-    if(currentAnswer === currentQuestion.answer){
+export default function Feedback(props) {
+  console.log('seee')
+  const result = () => {
+    console.log(props.answerCheck);
+    if(props.answerCheck === props.currentQuestion.answer){
         return ( <div className= 'results2' >
           Correct
         </div>
@@ -20,17 +12,14 @@ export default class Feedback extends React.Component {
     }else{
       return (<div className= 'results2' >
         Wrong
-        Correct answer: {currentQuestion.answer}
+        Correct answer: {props.currentQuestion.answer}
       </div>
     )
     }
   }
 
-  render() {
-    return (
-        <div className='results2'>
-          {result()}
-        </div>
-    )
-  }
+  return (
+      <div className='results2' result={() => result()}>
+      </div>
+  )
 }

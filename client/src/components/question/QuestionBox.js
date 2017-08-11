@@ -1,6 +1,6 @@
 import React from 'react';
 export default function QuestionBox(props) {
-  const { currentQuestion, onChange,loadUserQuestions, userQuestions, currentAnswer } = props;
+  const { currentQuestion, onChange,loadUserQuestions, userQuestions, currentAnswer, answerCheck } = props;
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -8,15 +8,15 @@ export default function QuestionBox(props) {
   }
 
   const result = () => {
-    console.log(currentAnswer)
-    while(currentAnswer){
-      if(currentAnswer === currentQuestion.answer){
-          return ( <div className= 'results' >
+    console.log(answerCheck)
+    while(answerCheck){
+      if(answerCheck === currentQuestion.answer){
+          return ( <div className='results' >
             Correct
           </div>
         )
       }else{
-        return (<div className= 'results' >
+        return (<div className='results' >
           Wrong
           Correct answer: {currentQuestion.answer}
         </div>
@@ -48,7 +48,7 @@ export default function QuestionBox(props) {
           <h2 className='question-text'>{currentQuestion.question}</h2>
           <form
             className='answer-form'
-            onSubmit ={ (e) => onSubmit(e)}>
+            onSubmit={(e) => onSubmit(e)}>
             <input
               type='text'
               placeholder='Enter your answer...'
@@ -59,8 +59,7 @@ export default function QuestionBox(props) {
               Submit
             </button>
           </form>
-          <div>
-            {result()}
+          <div >
           </div>
         </div>
       );

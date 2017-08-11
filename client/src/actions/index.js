@@ -79,6 +79,12 @@ export const incrementTotalAnswered = () => ({
   type: INCREMENT_TOTAL_ANSWERED
 });
 
+export const SET_ANSWER_CHECK = 'SET_ANSWER_CHECK';
+export const setAnswerCheck = currentAnswer => ({
+  type: SET_ANSWER_CHECK,
+  currentAnswer
+});
+
 export const fetchUser = accessToken => dispatch => {
   dispatch(fetchUserRequest());
   dispatch(setAccessToken(accessToken));
@@ -185,16 +191,6 @@ class DLinkedList {
     this.length--;
   }
 }
-
-function findLast(lst) {
-  var currNode = lst.head;
-  while (!(currNode.next === null)) {
-    currNode = currNode.next;
-    // console.log(currNode);
-  }
-  return currNode;
-}
-
 
 // Spaced Repetition Algorithm
 export const loadUserQuestions = (initialList, currentDll = null, userAnswer = null, currentQuestion = null) => dispatch =>{

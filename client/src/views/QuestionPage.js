@@ -1,9 +1,9 @@
 import React from 'react';
 import NavBar from '../components/nav/NavBar';
 import QuestionBox from '../components/question/QuestionBox';
+import Feedback from '../components/question/feedback';
 import '../styles/QuestionPage.css';
 import * as Cookies from 'js-cookie';
-import {fetchQuestions, setCurrentQuestion} from '../actions/index';
 import store from '../store';
 
 export default class QuestionPage extends React.Component {
@@ -14,7 +14,8 @@ export default class QuestionPage extends React.Component {
     };
     this.questProps = {
       onChange: this.props.setCurrentAnswer,
-      onStartQuiz: (e) => console.log(e.target)
+      onStartQuiz: (e) => console.log(e.target),
+      result: this.props.setAnswerCheck
     };
   }
 
@@ -39,6 +40,14 @@ export default class QuestionPage extends React.Component {
           loadUserQuestions={this.props.loadUserQuestions}
           currentAnswer={this.props.currentAnswer}
           userQuestions={this.props.userQuestions}
+          // result={this.props.setAnswerCheck}
+          // answerCheck={this.props.answerCheck}
+        />
+
+        <Feedback
+          result={this.props.setAnswerCheck}
+          answerCheck={this.props.answerCheck}
+          currentQuestion={this.props.currentQuestion}
         />
       </div>
     );
