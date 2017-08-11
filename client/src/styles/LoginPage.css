@@ -1,6 +1,34 @@
 * {
   font-family: 'PT Mono', monospace;
 }
+.button {
+  background: #84d934;
+  background-image: -webkit-linear-gradient(top, #84d934, #42b82b);
+  background-image: -moz-linear-gradient(top, #84d934, #42b82b);
+  background-image: -ms-linear-gradient(top, #84d934, #42b82b);
+  background-image: -o-linear-gradient(top, #84d934, #42b82b);
+  background-image: linear-gradient(to bottom, #84d934, #42b82b);
+  -webkit-border-radius: 27;
+  -moz-border-radius: 27;
+  border: none;
+  border-radius: 27px;
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: #3cfc49;
+  background-image: -webkit-linear-gradient(top, #3cfc49, #34d934);
+  background-image: -moz-linear-gradient(top, #3cfc49, #34d934);
+  background-image: -ms-linear-gradient(top, #3cfc49, #34d934);
+  background-image: -o-linear-gradient(top, #3cfc49, #34d934);
+  background-image: linear-gradient(to bottom, #3cfc49, #34d934);
+  text-decoration: none;
+  cursor: pointer;
+}
 .views-login-page {
   display: flex;
   flex-direction: column;
@@ -54,4 +82,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.login-button {
+  margin: 20px 0 40px 0;
 }
