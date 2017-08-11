@@ -37,6 +37,7 @@ $ npm install
 ```sh
 $ npm run dev
 ```
+go to `http://localhost:8080`
 
 * You will need to get google OAuth credentials.
 * You should get a Client ID and Secret.
