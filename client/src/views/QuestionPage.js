@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from '../components/nav/NavBar';
 import QuestionBox from '../components/question/QuestionBox';
-import Feedback from '../components/question/feedback';
+import Feedback from '../components/question/Feedback';
 import '../styles/QuestionPage.css';
 import * as Cookies from 'js-cookie';
 
