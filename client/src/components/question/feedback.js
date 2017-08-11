@@ -13,7 +13,7 @@ export default function Feedback(props) {
       }else{
         return (<div className= 'results2' >
           Wrong
-          Correct answer: {props.currentQuestion.answer}
+          Correct answer: {props.answerCheck.previousQ.answer}
         </div>
       )
       }
@@ -23,7 +23,6 @@ export default function Feedback(props) {
   return (
       <div className='results2'>
         {result()}
-        {/* lalalala */}
       </div>
   );
 }

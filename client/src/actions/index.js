@@ -80,9 +80,10 @@ export const incrementTotalAnswered = () => ({
 });
 
 export const SET_ANSWER_CHECK = 'SET_ANSWER_CHECK';
-export const setAnswerCheck = (currentAnswer, correct) => ({
+export const setAnswerCheck = (currentAnswer, currentQuestion, correct) => ({
   type: SET_ANSWER_CHECK,
   currentAnswer,
+  currentQuestion,
   correct
 });
 
@@ -219,12 +220,12 @@ export const loadUserQuestions = (initialList, currentDll = null, userAnswer = n
       //dispatch(setAnswerCheck(userAnswer));
       if (userAnswer !== currentQuestion.answer) {
         dispatch(updateCurrentStreak(false));
-        dispatch(setAnswerCheck(userAnswer, false));
+        dispatch(setAnswerCheck(userAnswer, currentQuestion, false));
         return false;
       }
       else {
         dispatch(updateCurrentStreak(true));
-        dispatch(setAnswerCheck(userAnswer, true));
+        dispatch(setAnswerCheck(userAnswer, currentQuestion, true));
         return true;
       }
     };

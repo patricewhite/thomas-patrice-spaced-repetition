@@ -81,6 +81,7 @@ const reducer = (state = initialState, action) => {
   case actions.SET_ANSWER_CHECK:
     return Object.assign({}, state, {
       answerCheck: {previousAns: action.currentAnswer,
+      previousQ: action.currentQuestion,
       correct: action.correct}
     });
 

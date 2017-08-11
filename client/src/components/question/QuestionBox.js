@@ -9,7 +9,7 @@ export default function QuestionBox(props) {
     onChange('');
   };
 
-  }
+
 
   // const result = () => {
   //   console.log(answerCheck)
