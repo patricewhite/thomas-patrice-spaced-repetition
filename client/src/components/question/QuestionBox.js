@@ -11,8 +11,9 @@ export default function QuestionBox(props) {
 
   const initialBox = (
     <div className='initial-question-container'>
-      <h2>Ready to go?</h2>
+      <h2 className='are-you-ready'>Are you ready to Vim?</h2>
       <button
+        className='initial-box-button button'
         type='button'
         onClick={() => loadUserQuestions(null, null, currentQuestion)}
         >Let's Go!
