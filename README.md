@@ -54,7 +54,7 @@ module.exports = {
 * You will also need to have a local mongo server
 
 ## Screenshots
-#### Login Screen
+### Login Screen
 ![Login Screen](Images/Login.png) <br/>
-#### Questions Page
+### Questions Page
 ![Questions Page](Images/QuestionsPage.png) <br/>
