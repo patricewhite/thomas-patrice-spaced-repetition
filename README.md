@@ -3,7 +3,7 @@
 Have you ever wanted to use the vim text editor but no idea how? This is the app
 for you. Using space repetition it will teach you all the commands you will need
 to know to easily maneuver through the editor. All you have to do is sign-up/login
-with your google email and start learning. 
+with your google email and start learning.
 
 ## Technology Used
 
