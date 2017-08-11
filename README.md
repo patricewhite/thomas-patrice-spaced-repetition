@@ -1,4 +1,4 @@
-# How Do I Vim?
+# How do I Vim?
 
 Have you ever wanted to use the vim text editor but no idea how? This is the app
 for you. Using space repetition it will teach you all the commands you will need
@@ -37,7 +37,7 @@ $ npm install
 ```sh
 $ npm run dev
 ```
-go to `http://localhost:8080` and the app shoud running 
+go to `http://localhost:8080` and the app shoud running
 
 * You will need to get google OAuth credentials.
 * You should get a Client ID and Secret.
@@ -54,7 +54,7 @@ module.exports = {
 * You will also need to have a local mongo server
 
 ## Screenshots
-#### Login Screen
+### Login Screen
 ![Login Screen](Images/Login.png) <br/>
-#### Questions Page
+### Questions Page
 ![Questions Page](Images/QuestionsPage.png) <br/>
