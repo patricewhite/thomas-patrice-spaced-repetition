@@ -7,11 +7,10 @@ const initialState = {
   dbQuestions: [{question: 'something', answer: 'something'}], // a fixed array of questions from the DB.
   userQuestions: [], // this list of questions to be asked. Out from the spacedRep.
   currentQuestion: null, // current question displayed. { _id: 234234, question: 'something', answer: 'something'},
-  currentAnswer: null,
+  answerCheck: null,
   currentStreak: null,
   totalCorrect: 0,
   totalAnswered: 0,
-
   currentUser: null,
   accessToken: null,
 };
@@ -77,6 +76,12 @@ const reducer = (state = initialState, action) => {
   case actions.SET_CURRENT_ANSWER:
     return Object.assign({}, state, {
       currentAnswer: action.currentAnswer
+    });
+
+  case actions.SET_ANSWER_CHECK:
+    return Object.assign({}, state, {
+      answerCheck: {previousAns: action.currentAnswer,
+      correct: action.correct}
     });
 
   case actions.UPDATE_CURRENT_STREAK:

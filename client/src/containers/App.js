@@ -14,6 +14,11 @@ export class App extends React.Component {
       this.props.dispatch(actions.fetchUser(accessToken));
     }
   }
+
+  setAnswerCheck(currentAnswer, correct){
+    this.props.dispatch(actions.setAnswerCheck(currentAnswer, correct));
+  }
+
   setCurrentAnswer(currentAnswer){
     this.props.dispatch(actions.setCurrentAnswer(currentAnswer));
   }
@@ -30,17 +35,19 @@ export class App extends React.Component {
     }
 
     return (
-      <QuestionPage
-        fetchQuestions={() => this.fetchQuestions()}
-        loadUserQuestions={(currentDll, userAnswer, currentQuestion) => this.loadUserQuestions(currentDll, userAnswer, currentQuestion)}
-        currentQuestion={this.props.currentQuestion}
-        userQuestions={this.props.userQuestions}
-        currentAnswer={this.props.currentAnswer}
-        setCurrentAnswer={(currentAnswer) => this.setCurrentAnswer(currentAnswer)}
-        totalCorrect={this.props.totalCorrect}
-        totalAnswered={this.props.totalAnswered}
-        currentStreak={this.props.currentStreak}
-      />
+        <QuestionPage
+          fetchQuestions={() => this.fetchQuestions()}
+          loadUserQuestions={(currentDll, userAnswer, currentQuestion) => this.loadUserQuestions(currentDll, userAnswer, currentQuestion)}
+          currentQuestion={this.props.currentQuestion}
+          userQuestions={this.props.userQuestions}
+          currentAnswer={this.props.currentAnswer}
+          setCurrentAnswer={(currentAnswer) => this.setCurrentAnswer(currentAnswer)}
+          totalCorrect={this.props.totalCorrect}
+          totalAnswered={this.props.totalAnswered}
+          currentStreak={this.props.currentStreak}
+          answerCheck={this.props.answerCheck}
+          setAnswerCheck={(currentAnswer, correct)=> this.setAnswerCheck(currentAnswer, correct)}
+        />
     );
   }
 }
@@ -57,7 +64,8 @@ const mapStateToProps = state => {
     totalCorrect: state.totalCorrect,
     totalAnswered: state.totalAnswered,
     currentUser: state.currentUser,
-    accessToken: state.accessToken
+    accessToken: state.accessToken,
+    answerCheck: state.answerCheck
   };
 };
 
