@@ -9,33 +9,11 @@ export default function QuestionBox(props) {
     onChange('');
   };
 
-
-
-  // const result = () => {
-  //   console.log(answerCheck)
-  //   while(answerCheck){
-  //     if(answerCheck === currentQuestion.answer){
-  //         return ( <div className='results' >
-  //           Correct
-  //         </div>
-  //       )
-  //     }else{
-  //       return (<div className='results' >
-  //         Wrong
-  //         Correct answer: {currentQuestion.answer}
-  //       </div>
-  //     )
-  //     }
-  //   }
-  // }
-
-
-
-
   const initialBox = (
     <div className='initial-question-container'>
-      <h2>Ready to go?</h2>
+      <h2 className='are-you-ready'>Are you ready to Vim?</h2>
       <button
+        className='initial-box-button button'
         type='button'
         onClick={() => loadUserQuestions(null, null, currentQuestion)}
         >Let's Go!
@@ -46,10 +24,10 @@ export default function QuestionBox(props) {
     if (currentQuestion) {
       return (
         <div className='current-question-container'>
-          <div className='question-controls'>
+          {/* <div className='question-controls'>
             <a href='#'>Previous</a>
             <a href='#'>I don't know!</a>
-          </div>
+          </div> */}
           <h2 className='question-text'>{currentQuestion.question}</h2>
           <form
             className='answer-form'
@@ -61,12 +39,13 @@ export default function QuestionBox(props) {
               onChange={(e) => onChange(e.target.value)}
               value={currentAnswer}
             />
-            <button type='submit'>
+            <button
+              className='button submit-answer-button'
+              type='submit'>
               Submit
             </button>
           </form>
-          <div >
-          </div>
+          <div  />
         </div>
       );
     }
