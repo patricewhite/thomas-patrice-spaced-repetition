@@ -1,4 +1,4 @@
-# How Do I Vim?
+# How do I Vim?
 
 Have you ever wanted to use the vim text editor but no idea how? This is the app
 for you. Using space repetition it will teach you all the commands you will need
