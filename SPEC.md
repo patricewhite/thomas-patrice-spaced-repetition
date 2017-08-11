@@ -16,9 +16,9 @@
 ## Wire Frames
 
 #### Login Screen
-![Login Screen](Images/Login.png) <br/>
+![Login Screen](Images/Specs/Login.png) <br/>
 #### Questions Page
-![Questions Page](Images/QuestionsPage.png) <br/>
+![Questions Page](Images/Specs/QuestionsPage.png) <br/>
 
 ## Data Flow for Spaced Rep Algorithm
 
